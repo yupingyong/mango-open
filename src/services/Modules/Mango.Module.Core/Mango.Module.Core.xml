@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mango.Module.Core</name>
+    </assembly>
+    <members>
+        <member name="P:Mango.Module.Core.Entity.m_User.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.AccountName">
+            <summary>
+            用户账号名
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Password">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.RegisterDate">
+            <summary>
+            注册时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.LastLoginDate">
+            <summary>
+            最后登陆时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.LastLoginIP">
+            <summary>
+            最后登陆IP
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.RegisterIP">
+            <summary>
+            注册IP地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.IsStatus">
+            <summary>
+            用户状态(true:正常
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.HeadUrl">
+            <summary>
+            用户头像地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.GroupId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.OpenId">
+            <summary>
+            开放平台Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.AddressInfo">
+            <summary>
+            地区信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Birthday">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Tags">
+            <summary>
+            个人标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_User.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroup.GroupId">
+            <summary>
+            用户组Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroup.GroupName">
+            <summary>
+            用户组名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroup.IsDefault">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.MId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.MName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.AreaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.ControllerName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.ActionName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.ParentId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupMenu.IsPower">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupPower.PId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupPower.MId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserGroupPower.GroupId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserPlusRecords.RecordsId">
+            <summary>
+            记录Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserPlusRecords.ObjectId">
+            <summary>
+            点赞对象ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserPlusRecords.UserId">
+            <summary>
+            添加人
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserPlusRecords.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_UserPlusRecords.RecordsType">
+            <summary>
+            记录类型 1 帖子点赞 2 帖子回答点赞 3 帖子评论点赞 4 文档主题点赞 5 文档点赞
+            </summary>
+        </member>
+    </members>
+</doc>

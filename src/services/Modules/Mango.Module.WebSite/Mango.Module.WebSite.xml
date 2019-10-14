@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mango.Module.WebSite</name>
+    </assembly>
+    <members>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.MessageId">
+            <summary>
+            消息Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.MessageType">
+            <summary>
+            消息类型
+            系统消息: 0:系统通知
+            帖子消息: 10:帖子回复消息,11:帖子评论消息,12:帖子点赞消息,13:回复点赞消息,14:评论点赞消息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.PostDate">
+            <summary>
+            提交时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.UserId">
+            <summary>
+            消息接收用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.AppendUserId">
+            <summary>
+            产生消息用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.ObjId">
+            <summary>
+            存储对象Id(PostId ShareId)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Message.IsRead">
+            <summary>
+            是否已经阅读
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.SmsID">
+            <summary>
+            短信ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.Phone">
+            <summary>
+            短信手机号
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.Contents">
+            <summary>
+            短信内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.SendTime">
+            <summary>
+            发送时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.SendIP">
+            <summary>
+            发送IP地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_Sms.IsOk">
+            <summary>
+            是否发送成功
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.ConfigId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.WebSiteName">
+            <summary>
+            网站名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.WebSiteUrl">
+            <summary>
+            网站地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.WebSiteTitle">
+            <summary>
+            网站标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.WebSiteKeyWord">
+            <summary>
+            网站关键字
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.WebSiteDescription">
+            <summary>
+            网站描述
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.CopyrightText">
+            <summary>
+            底部版权申明
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.IsLogin">
+            <summary>
+            是否开放登录
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.IsRegister">
+            <summary>
+            是否开放注册
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.FilingNo">
+            <summary>
+            网站备案号
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.NavigationId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.LinkUrl">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.NavigationName">
+            <summary>
+            导航名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.IsTarget">
+            <summary>
+            是否为跳转到新窗口
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.SortCount">
+            <summary>
+            排序(从小到大)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.WebSite.Entity.m_WebSiteNavigation.IsShow">
+            <summary>
+            是否显示到前端
+            </summary>
+        </member>
+    </members>
+</doc>

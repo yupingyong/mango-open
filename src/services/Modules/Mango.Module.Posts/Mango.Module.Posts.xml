@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mango.Module.Posts</name>
+    </assembly>
+    <members>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.PostsId">
+            <summary>
+            帖子Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.Title">
+            <summary>
+            帖子标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.Contents">
+            <summary>
+            帖子内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.PostDate">
+            <summary>
+            发布时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.LastDate">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.ReadCount">
+            <summary>
+            阅读次数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.Tags">
+            <summary>
+            属性Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.ImgUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.IsReply">
+            <summary>
+            是否允许回复
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.AnswerCount">
+            <summary>
+            回复数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_Posts.ChannelId">
+            <summary>
+            所属频道
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.AnswerId">
+            <summary>
+            回答Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.Contents">
+            <summary>
+            回答内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.PostDate">
+            <summary>
+            回答时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.UserId">
+            <summary>
+            回答人
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.PostsId">
+            <summary>
+            所属问题帖子Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.Plus">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.CommentsCount">
+            <summary>
+            评论回复数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAnswer.IsShow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAttention.AttentionId">
+            <summary>
+            关注Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAttention.PostsId">
+            <summary>
+            帖子Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAttention.AttentionDate">
+            <summary>
+            关注时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsAttention.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.ChannelId">
+            <summary>
+            频道ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.ChannelName">
+            <summary>
+            频道名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.Remarks">
+            <summary>
+            备注信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.AppendTime">
+            <summary>
+            频道创建时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.IsManager">
+            <summary>
+            是否只允许管理员发帖
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsChannel.SortCount">
+            <summary>
+            排序(从小到大)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.CommentId">
+            <summary>
+            评论Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.Contents">
+            <summary>
+            评论内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.PostDate">
+            <summary>
+            评论时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.ToUserId">
+            <summary>
+            回应用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.AnswerId">
+            <summary>
+            回答Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.IsShow">
+            <summary>
+            评论是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsComments.Plus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsTags.TagsId">
+            <summary>
+            属性Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Posts.Entity.m_PostsTags.TagsName">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+    </members>
+</doc>

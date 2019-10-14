@@ -1,0 +1,20 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs
+/src/services/.vs/Mango.Paltform/v16
+/src/services/Mango.Framework/bin/Debug/netcoreapp3.0
+/src/services/Mango.Framework/obj
+/src/services/Mango.WebHost/bin/Debug/netcoreapp3.0
+/src/services/Mango.WebHost/obj
+/src/services/Modules/Mango.Module.Core/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.Core/obj
+/src/services/Modules/Mango.Module.Posts/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.Posts/obj
+/src/services/Modules/Mango.Module.WebSite/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.WebSite/obj
+/src/services/Mango.WebHost/Modules/Mango.Module.Core
+/src/services/Mango.WebHost/Modules/Mango.Module.Posts
+/src/services/Mango.WebHost/Modules/Mango.Module.WebSite
+*.user
