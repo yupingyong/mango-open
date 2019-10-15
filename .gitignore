@@ -18,3 +18,4 @@
 /src/services/Mango.WebHost/Modules/Mango.Module.Posts
 /src/services/Mango.WebHost/Modules/Mango.Module.WebSite
 *.user
+/src/services/.vs/Mango.Paltform/DesignTimeBuild

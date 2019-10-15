@@ -18,6 +18,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http;
 
 using Mango.Framework;
+using Mango.Framework.Data;
 namespace Mango.WebHost
 {
     public class Startup
@@ -39,6 +40,8 @@ namespace Mango.WebHost
             services.AddCustomizedMvc();
 
             services.AddCustomizedSwagger(GlobalConfiguration.ContentRootPath);
+            //
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             //服务组件的注册需要放到最后
             services.AddCustomizedServices(Configuration);
         }
