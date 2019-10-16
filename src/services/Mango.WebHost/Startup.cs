@@ -41,6 +41,12 @@ namespace Mango.WebHost
 
             services.AddCustomizedSwagger(GlobalConfiguration.ContentRootPath);
             //
+            services.AddDbContextPool<MangoDbContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
+            });
+            services.AddScoped(typeof(IUnitOfWork<MangoDbContext>), typeof(UnitOfWork<MangoDbContext>));
+            
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             //服务组件的注册需要放到最后
             services.AddCustomizedServices(Configuration);
