@@ -7,13 +7,13 @@ namespace Mango.Framework.Data
 {
 
     /// <summary>
-    /// Defines the interface(s) for generic unit of work.
+    /// 
     /// </summary>
     public interface IUnitOfWork<TContext> : IDisposable where TContext : DbContext
     {
         TContext DbContext { get; }
-        IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = false) where TEntity : EntityBase;
-        int SaveChanges(bool ensureAutoHistory = false);
-        Task<int> SaveChangesAsync(bool ensureAutoHistory = false);
+        IRepository<TEntity> GetRepository<TEntity>() where TEntity : EntityBase;
+        int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

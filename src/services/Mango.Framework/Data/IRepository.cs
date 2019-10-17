@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Mango.Framework.Data
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<T> Query();
+        IQueryable<TEntity> Query();
 
-        void Add(T entity);
+        void Add(TEntity entity);
 
-        void AddRange(IEnumerable<T> entity);
+        void AddRange(IEnumerable<TEntity> entity);
 
         IDbContextTransaction BeginTransaction();
 
@@ -24,6 +24,6 @@ namespace Mango.Framework.Data
 
         Task SaveChangesAsync();
 
-        void Remove(T entity);
+        void Remove(TEntity entity);
     }
 }

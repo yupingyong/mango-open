@@ -80,7 +80,7 @@ namespace Mango.WebHost
                     endpoints.MapAreaControllerRoute(
                         name: "area",
                        areaName: module.Name,
-                       pattern: "api/{area:exists}/{controller}/{action}/{id?}"
+                       pattern: "api/{area:exists}/{controller}/{id?}"
                      );
                 }
                 endpoints.MapGet("/", async context =>

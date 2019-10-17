@@ -10,24 +10,24 @@ using System.Threading.Tasks;
 
 namespace Mango.Framework.Data
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         public Repository(MangoDbContext context)
         {
             Context = context;
-            DbSet = Context.Set<T>();
+            DbSet = Context.Set<TEntity>();
         }
 
         protected DbContext Context { get; }
 
-        protected DbSet<T> DbSet { get; }
+        protected DbSet<TEntity> DbSet { get; }
 
-        public void Add(T entity)
+        public void Add(TEntity entity)
         {
             DbSet.Add(entity);
         }
 
-        public void AddRange(IEnumerable<T> entity)
+        public void AddRange(IEnumerable<TEntity> entity)
         {
             DbSet.AddRange(entity);
         }
@@ -35,6 +35,10 @@ namespace Mango.Framework.Data
         public IDbContextTransaction BeginTransaction()
         {
             return Context.Database.BeginTransaction();
+        }
+        public void Remove(TEntity entity)
+        {
+            DbSet.Remove(entity);
         }
 
         public void SaveChanges()
@@ -47,14 +51,11 @@ namespace Mango.Framework.Data
             return Context.SaveChangesAsync();
         }
 
-        public IQueryable<T> Query()
+        public IQueryable<TEntity> Query()
         {
             return DbSet;
         }
 
-        public void Remove(T entity)
-        {
-            DbSet.Remove(entity);
-        }
+        
     }
 }

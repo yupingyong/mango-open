@@ -5,9 +5,10 @@ using System.Text;
 using Microsoft.Data.SqlClient;
 using System.Transactions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 namespace Mango.Framework.Data
 {
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : MangoDbContext
     {
         private readonly TContext _context;
         private bool _disposed = false;
@@ -22,19 +23,32 @@ namespace Mango.Framework.Data
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
         public TContext DbContext => _context;
-        public IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = false) where TEntity : EntityBase
+        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : EntityBase
         {
-            
-
-            return null;
+            if (_repositories == null)
+            {
+                _repositories = new Dictionary<Type, object>();
+            }
+            var customRepo = _context.GetService<IRepository<TEntity>>();
+            if (customRepo != null)
+            {
+                return customRepo;
+            }
+            return new Repository<TEntity>(_context);
         }
-        public int SaveChanges(bool ensureAutoHistory = false)
+        public int SaveChanges()
         {
            return _context.SaveChanges();
         }
-        public Task<int> SaveChangesAsync(bool ensureAutoHistory = false)
+        public Task<int> SaveChangesAsync()
         {
             return _context.SaveChangesAsync();
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
         }
         protected virtual void Dispose(bool disposing)
         {
@@ -42,11 +56,9 @@ namespace Mango.Framework.Data
             {
                 if (disposing)
                 {
-                    // dispose the db context.
                     _context.Dispose();
                 }
             }
-
             _disposed = true;
         }
     }
