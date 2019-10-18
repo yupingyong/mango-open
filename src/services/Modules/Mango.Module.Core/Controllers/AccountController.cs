@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Mango.Framework.Data;
 namespace Mango.Module.Core.Controllers
 {
     
@@ -13,11 +14,18 @@ namespace Mango.Module.Core.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private IUnitOfWork<MangoDbContext> _uow;
+        public AccountController(IUnitOfWork<MangoDbContext> uow)
+        {
+            _uow = uow;
+        }
         // GET: api/Account/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var rep = _uow.GetRepository<Entity.m_User>();
+            var userData = rep.Query().Where(q => q.UserId == 2).FirstOrDefault();
+            return new JsonResult(userData);
         }
 
         // POST: api/Account

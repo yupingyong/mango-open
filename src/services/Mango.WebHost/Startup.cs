@@ -41,7 +41,7 @@ namespace Mango.WebHost
 
             services.AddCustomizedSwagger(GlobalConfiguration.ContentRootPath);
             //
-            services.AddDbContextPool<MangoDbContext>(opts =>
+            services.AddDbContext<MangoDbContext>(opts =>
             {
                 opts.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
             });

@@ -12,7 +12,7 @@ namespace Mango.Framework.Data
     {
         private readonly TContext _context;
         private bool _disposed = false;
-        private Dictionary<Type, object> _repositories;
+        private TransactionScope _scope;
 
         /// <summary>
         /// 
@@ -22,13 +22,17 @@ namespace Mango.Framework.Data
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
+        /// <summary>
+        /// EF Core上下文
+        /// </summary>
         public TContext DbContext => _context;
+        /// <summary>
+        /// 获取指定TEntity的仓储对象
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <returns></returns>
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : EntityBase
         {
-            if (_repositories == null)
-            {
-                _repositories = new Dictionary<Type, object>();
-            }
             var customRepo = _context.GetService<IRepository<TEntity>>();
             if (customRepo != null)
             {
@@ -36,14 +40,56 @@ namespace Mango.Framework.Data
             }
             return new Repository<TEntity>(_context);
         }
+        /// <summary>
+        /// 持久化到数据库(同步)
+        /// </summary>
+        /// <returns></returns>
         public int SaveChanges()
         {
            return _context.SaveChanges();
         }
+        /// <summary>
+        /// 持久化到数据库(异步)
+        /// </summary>
+        /// <returns></returns>
         public Task<int> SaveChangesAsync()
         {
             return _context.SaveChangesAsync();
         }
+        /// <summary>
+        /// 开始事务
+        /// </summary>
+        public void BeginTransaction()
+        {
+            if (_scope == null)
+            {
+                _scope = new TransactionScope();
+            }
+        }
+        /// <summary>
+        /// 事务提交
+        /// </summary>
+        /// <returns></returns>
+        public int Commit()
+        {
+            try
+            {
+                int count = this.SaveChanges();
+                _scope.Complete();
+                return count;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                _scope.Dispose();
+            }
+        }
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

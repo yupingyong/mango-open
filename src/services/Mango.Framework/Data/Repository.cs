@@ -22,35 +22,50 @@ namespace Mango.Framework.Data
 
         protected DbSet<TEntity> DbSet { get; }
 
-        public void Add(TEntity entity)
+        /// <summary>
+        /// 添加记录
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Insert(TEntity entity)
         {
             DbSet.Add(entity);
         }
-
-        public void AddRange(IEnumerable<TEntity> entity)
+        /// <summary>
+        /// 添加记录(批量)
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Insert(IEnumerable<TEntity> entity)
         {
             DbSet.AddRange(entity);
         }
-
-        public IDbContextTransaction BeginTransaction()
+        /// <summary>
+        /// 更新记录
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Update(TEntity entity)
         {
-            return Context.Database.BeginTransaction();
+            DbSet.Update(entity);
         }
-        public void Remove(TEntity entity)
+        /// <summary>
+        /// 更新记录(批量)
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Update(IEnumerable<TEntity> entity)
+        {
+            DbSet.UpdateRange(entity);
+        }
+        /// <summary>
+        /// 删除记录
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Delete(TEntity entity)
         {
             DbSet.Remove(entity);
         }
-
-        public void SaveChanges()
-        {
-            Context.SaveChanges();
-        }
-
-        public Task SaveChangesAsync()
-        {
-            return Context.SaveChangesAsync();
-        }
-
+        /// <summary>
+        /// 得到实体查询对象
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<TEntity> Query()
         {
             return DbSet;
