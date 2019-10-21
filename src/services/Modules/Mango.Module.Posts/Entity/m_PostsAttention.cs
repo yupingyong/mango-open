@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
-
+using Mango.Framework.Data;
 namespace Mango.Module.Posts.Entity
 {
-    public partial class m_PostsAttention
+    public partial class m_PostsAttention:EntityBase
     {
 		
         /// <summary>

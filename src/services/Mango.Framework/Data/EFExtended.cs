@@ -7,11 +7,37 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
+using System.ComponentModel.DataAnnotations;
 namespace Mango.Framework.Data
 {
     public static class EFExtended
     {
         #region 更新与删除扩展
+        /// <summary>
+        /// 指定更新数据列(修改指定的列)扩展
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="entity"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
+        public static bool DesignationUpdate<TEntity>(this DbContext context, TEntity entity) where TEntity : class
+        {
+            context.Entry(entity).State = EntityState.Unchanged;
+            //
+            Type type = entity.GetType();
+            //处理实体类属性
+            PropertyInfo[] properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                object value = property.GetValue(entity, null);
+                var key = property.GetCustomAttribute<KeyAttribute>();
+                if (value != null && key == null)
+                {
+                    context.Entry(entity).Property(property.Name).IsModified = true;
+                }
+            }
+            return true;
+        }
         /// <summary>
         /// 自定义更新扩展
         /// </summary>

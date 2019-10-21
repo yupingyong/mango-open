@@ -2,46 +2,64 @@ using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
-namespace Mango.Module.Posts.Entity
+namespace Mango.Module.Docs.Entity
 {
-    public partial class m_Posts:EntityBase
+    public partial class m_Docs:EntityBase
     {
 		
         /// <summary>
-        /// 帖子Id
+        /// 文档项ID
         /// </summary>
         [Key]
-        public int? PostsId { get; set; }
+        public int? DocsId { get; set; }
 		
         /// <summary>
-        /// 帖子标题
+        /// 标题
         /// </summary>
         
         public string Title { get; set; }
 		
         /// <summary>
-        /// 帖子内容
+        /// 短标题
+        /// </summary>
+        
+        public string ShortTitle { get; set; }
+		
+        /// <summary>
+        /// 内容
         /// </summary>
         
         public string Contents { get; set; }
 		
         /// <summary>
-        /// 发布时间
+        /// 添加时间
         /// </summary>
         
-        public DateTime? PostDate { get; set; }
+        public DateTime? AppendTime { get; set; }
 		
         /// <summary>
         /// 最后更新时间
         /// </summary>
         
-        public DateTime? LastDate { get; set; }
+        public DateTime? LastTime { get; set; }
 		
         /// <summary>
-        /// 用户Id
+        /// 所属主题
+        /// </summary>
+        
+        public int? ThemeId { get; set; }
+		
+        /// <summary>
+        /// 发布人
         /// </summary>
         
         public int? UserId { get; set; }
+		
+        /// <summary>
+        /// 浏览数
+        /// </summary>
+        
+        public int? ReadCount { get; set; }
 		
         /// <summary>
         /// +1数
@@ -50,10 +68,16 @@ namespace Mango.Module.Posts.Entity
         public int? PlusCount { get; set; }
 		
         /// <summary>
-        /// 阅读次数
+        /// 标签
         /// </summary>
         
-        public int? ReadCount { get; set; }
+        public string Tags { get; set; }
+		
+        /// <summary>
+        /// 支持的版本信息
+        /// </summary>
+        
+        public string VersionText { get; set; }
 		
         /// <summary>
         /// 是否显示
@@ -62,34 +86,10 @@ namespace Mango.Module.Posts.Entity
         public bool? IsShow { get; set; }
 		
         /// <summary>
-        /// 属性Id
+        /// 是否已经审核
         /// </summary>
         
-        public string Tags { get; set; }
-		
-        /// <summary>
-        /// 图片地址
-        /// </summary>
-        
-        public string ImgUrl { get; set; }
-		
-        /// <summary>
-        /// 是否允许回复
-        /// </summary>
-        
-        public bool? IsReply { get; set; }
-		
-        /// <summary>
-        /// 回复数
-        /// </summary>
-        
-        public int? AnswerCount { get; set; }
-		
-        /// <summary>
-        /// 所属频道
-        /// </summary>
-        
-        public int? ChannelId { get; set; }
+        public bool? IsAudit { get; set; }
 		
     }
 }

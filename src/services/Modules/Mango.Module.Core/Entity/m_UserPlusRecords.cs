@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using Mango.Framework.Data;
 namespace Mango.Module.Core.Entity
 {
-    public class m_UserPlusRecords
+    public class m_UserPlusRecords:EntityBase
     {
         /// <summary>
         /// 记录Id

@@ -32,6 +32,7 @@ namespace Mango.Module.Core.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT: api/Account/5

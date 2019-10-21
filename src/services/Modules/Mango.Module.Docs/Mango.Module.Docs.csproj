@@ -5,16 +5,20 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Mango.Module.Core.xml</DocumentationFile>
+    <DocumentationFile>Mango.Module.Docs.xml</DocumentationFile>
     <OutputPath></OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Mango.Module.Core.xml" />
+    <None Remove="Mango.Module.Docs.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mango.Module.Core.xml">
+    <Content Include="Mango.Module.Docs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">

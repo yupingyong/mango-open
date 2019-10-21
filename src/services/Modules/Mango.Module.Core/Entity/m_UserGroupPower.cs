@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
-
+using Mango.Framework.Data;
 namespace Mango.Module.Core.Entity
 {
-    public partial class m_UserGroupPower
+    public partial class m_UserGroupPower:EntityBase
     {
 		
         /// <summary>

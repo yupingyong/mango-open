@@ -19,3 +19,6 @@
 /src/services/Mango.WebHost/Modules/Mango.Module.WebSite
 *.user
 /src/services/.vs/Mango.Paltform/DesignTimeBuild
+/src/services/Mango.WebHost/Modules/Mango.Module.Docs
+/src/services/Modules/Mango.Module.Docs/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.Docs/obj
