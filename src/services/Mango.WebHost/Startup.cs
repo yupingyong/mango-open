@@ -48,6 +48,8 @@ namespace Mango.WebHost
             services.AddScoped(typeof(IUnitOfWork<MangoDbContext>), typeof(UnitOfWork<MangoDbContext>));
             
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            //授权组件
+            services.AddCustomizedAuthorization(_webHostEnvironment);
             //服务组件的注册需要放到最后
             services.AddCustomizedServices(Configuration);
         }
@@ -60,6 +62,9 @@ namespace Mango.WebHost
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
+            //启用授权组件
+            app.UseIdentityServer();
+            app.UseAuthentication();
             //启用接口文档组件
             app.UseSwaggerUI(c =>
             {

@@ -29,6 +29,8 @@ using Mango.Framework.Authorization;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Caching.Redis;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 namespace Mango.WebHost.Extensions
 {
     public static class ServiceCollectionExtensions
@@ -48,6 +50,27 @@ namespace Mango.WebHost.Extensions
                 InstanceName = configuration.GetSection("Cache:InstanceName").Value
             }));
             ServiceContext.RegisterServices(services.BuildServiceProvider());
+            return services;
+        }
+        /// <summary>
+        /// 添加授权验证组件
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCustomizedAuthorization(this IServiceCollection services, IWebHostEnvironment webHostEnvironment)
+        {
+            var builder = services.AddIdentityServer()
+                .AddInMemoryIdentityResources(IdentityServer4Config.GetIdentityResources())
+                .AddInMemoryApiResources(IdentityServer4Config.GetApis())
+                .AddInMemoryClients(IdentityServer4Config.GetClients());
+            if (webHostEnvironment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
             return services;
         }
         /// <summary>
