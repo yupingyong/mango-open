@@ -10,7 +10,7 @@ namespace Mango.Module.Posts.Controllers
     [Area("Posts")]
     [Route("api/[area]/[controller]")]
     [ApiController]
-    public class PostsController : ControllerBase
+    public class AddController : ControllerBase
     {
 
         // GET: api/Posts/5

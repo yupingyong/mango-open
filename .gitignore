@@ -22,3 +22,6 @@
 /src/services/Mango.WebHost/Modules/Mango.Module.Docs
 /src/services/Modules/Mango.Module.Docs/bin/Debug/netcoreapp3.0
 /src/services/Modules/Mango.Module.Docs/obj
+/src/services/Mango.WebHost/Modules/Mango.Module.CMS
+/src/services/Modules/Mango.Module.CMS/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.CMS/obj
