@@ -19,6 +19,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Mango.Framework\Mango.Framework.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="module.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,52 +2,46 @@ using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
-namespace Mango.Module.WebSite.Entity
+namespace Mango.Module.CMS.Entity
 {
-    public partial class m_WebSiteNavigation:EntityBase
+    public partial class m_CmsChannel:EntityBase
     {
 		
         /// <summary>
         /// 
         /// </summary>
         [Key]
-        public int? NavigationId { get; set; }
+        public int? ChannelId { get; set; }
 		
         /// <summary>
-        /// 链接地址
+        /// 频道名称
         /// </summary>
         
-        public string LinkUrl { get; set; }
+        public string ChannelName { get; set; }
 		
         /// <summary>
-        /// 导航名称
+        /// 备注信息
         /// </summary>
         
-        public string NavigationName { get; set; }
+        public string RemarkText { get; set; }
 		
         /// <summary>
-        /// 是否为跳转到新窗口
+        /// 是否显示
         /// </summary>
         
-        public bool? IsTarget { get; set; }
+        public int? StateCode { get; set; }
 		
         /// <summary>
-        /// 添加时间
+        /// 频道创建时间
         /// </summary>
         
         public DateTime? AppendTime { get; set; }
 		
         /// <summary>
-        /// 排序(从小到大)
+        /// 
         /// </summary>
         
         public int? SortCount { get; set; }
-
-        /// <summary>
-        /// 是否显示到前端
-        /// </summary>
-
-        public bool? IsShow { get; set; }
-
+		
     }
 }

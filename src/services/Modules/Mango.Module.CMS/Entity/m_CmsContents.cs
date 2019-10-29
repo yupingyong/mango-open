@@ -2,16 +2,16 @@ using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
-namespace Mango.Module.Docs.Entity
+namespace Mango.Module.CMS.Entity
 {
-    public partial class m_DocsTheme:EntityBase
+    public partial class m_CmsContents:EntityBase
     {
 		
         /// <summary>
-        /// 文档ID
+        /// 内容Id
         /// </summary>
         [Key]
-        public int? ThemeId { get; set; }
+        public int? ContentsId { get; set; }
 		
         /// <summary>
         /// 标题
@@ -20,22 +20,16 @@ namespace Mango.Module.Docs.Entity
         public string Title { get; set; }
 		
         /// <summary>
-        /// 内容描述
+        /// 内容
         /// </summary>
         
         public string Contents { get; set; }
 		
         /// <summary>
-        /// 发布用户
+        /// 发布时间
         /// </summary>
         
-        public int? AccountId { get; set; }
-		
-        /// <summary>
-        /// 添加时间
-        /// </summary>
-        
-        public DateTime? AppendTime { get; set; }
+        public DateTime? PostTime { get; set; }
 		
         /// <summary>
         /// 最后更新时间
@@ -44,10 +38,10 @@ namespace Mango.Module.Docs.Entity
         public DateTime? LastTime { get; set; }
 		
         /// <summary>
-        /// 浏览数
+        /// 账号Id
         /// </summary>
         
-        public int? ReadCount { get; set; }
+        public int? AccountId { get; set; }
 		
         /// <summary>
         /// +1数
@@ -56,22 +50,40 @@ namespace Mango.Module.Docs.Entity
         public int? PlusCount { get; set; }
 		
         /// <summary>
-        /// 标签
+        /// 阅读次数
         /// </summary>
         
-        public string Tags { get; set; }
-		
-        /// <summary>
-        /// 版本号信息
-        /// </summary>
-        
-        public string VersionText { get; set; }
+        public int? ReadCount { get; set; }
 		
         /// <summary>
         /// 是否显示
         /// </summary>
         
-        public bool? IsShow { get; set; }
+        public int? StateCode { get; set; }
+		
+        /// <summary>
+        /// 内容标签
+        /// </summary>
+        
+        public string Tags { get; set; }
+		
+        /// <summary>
+        /// 图片地址
+        /// </summary>
+        
+        public string ImgUrl { get; set; }
+		
+        /// <summary>
+        /// 回复数
+        /// </summary>
+        
+        public int? AnswerCount { get; set; }
+		
+        /// <summary>
+        /// 所属频道
+        /// </summary>
+        
+        public int? ChannelId { get; set; }
 		
     }
 }

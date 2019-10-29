@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
 namespace Mango.Module.Core.Entity
 {
-    public partial class m_UserGroupMenu:EntityBase
+    public partial class m_AccountGroupMenu:EntityBase
     {
 		
         /// <summary>

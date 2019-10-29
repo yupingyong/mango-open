@@ -4,5 +4,130 @@
         <name>Mango.Module.Docs</name>
     </assembly>
     <members>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.DocsId">
+            <summary>
+            文档项ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.ShortTitle">
+            <summary>
+            短标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.ThemeId">
+            <summary>
+            所属文档
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.AccountId">
+            <summary>
+            发布人
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.ReadCount">
+            <summary>
+            浏览数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.Tags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.VersionText">
+            <summary>
+            支持的版本信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_Docs.IsAudit">
+            <summary>
+            是否已经审核
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.ThemeId">
+            <summary>
+            文档ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.Contents">
+            <summary>
+            内容描述
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.AccountId">
+            <summary>
+            发布用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.ReadCount">
+            <summary>
+            浏览数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.Tags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.VersionText">
+            <summary>
+            版本号信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
     </members>
 </doc>

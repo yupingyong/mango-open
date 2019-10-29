@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mango.Module.CMS</name>
+    </assembly>
+    <members>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsAttention.AttentionId">
+            <summary>
+            关注Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsAttention.ContentsId">
+            <summary>
+            帖子Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsAttention.AttentionTime">
+            <summary>
+            关注时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsAttention.AccountId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.ChannelId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.ChannelName">
+            <summary>
+            频道名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.RemarkText">
+            <summary>
+            备注信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.StateCode">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.AppendTime">
+            <summary>
+            频道创建时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsChannel.SortCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.ContentsId">
+            <summary>
+            内容Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.PostTime">
+            <summary>
+            发布时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.AccountId">
+            <summary>
+            账号Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.ReadCount">
+            <summary>
+            阅读次数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.StateCode">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.Tags">
+            <summary>
+            内容标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.ImgUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.AnswerCount">
+            <summary>
+            回复数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Entity.m_CmsContents.ChannelId">
+            <summary>
+            所属频道
+            </summary>
+        </member>
+    </members>
+</doc>

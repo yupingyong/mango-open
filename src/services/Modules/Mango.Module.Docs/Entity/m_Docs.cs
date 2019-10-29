@@ -44,7 +44,7 @@ namespace Mango.Module.Docs.Entity
         public DateTime? LastTime { get; set; }
 		
         /// <summary>
-        /// 所属主题
+        /// 所属文档
         /// </summary>
         
         public int? ThemeId { get; set; }
@@ -53,7 +53,7 @@ namespace Mango.Module.Docs.Entity
         /// 发布人
         /// </summary>
         
-        public int? UserId { get; set; }
+        public int? AccountId { get; set; }
 		
         /// <summary>
         /// 浏览数

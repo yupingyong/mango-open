@@ -4,11 +4,8 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Mango.Module.Posts.xml</DocumentationFile>
+    <DocumentationFile>Mango.Module.CMS.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Mango.Module.Posts.xml" />
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
@@ -22,11 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Mango.Framework\Mango.Framework.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Mango.Module.Posts.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Update="module.json">

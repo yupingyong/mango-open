@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
 namespace Mango.Module.Core.Entity
 {
-    public partial class m_User:EntityBase
+    public partial class m_Account:EntityBase
     {
 		
         /// <summary>
         /// 用户Id
         /// </summary>
         [Key]
-        public int? UserId { get; set; }
+        public int? AccountId { get; set; }
 		
         /// <summary>
-        /// 用户账号名
+        /// 用户名
         /// </summary>
         
         public string AccountName { get; set; }
@@ -32,6 +32,30 @@ namespace Mango.Module.Core.Entity
         public string NickName { get; set; }
 		
         /// <summary>
+        /// 用户头像
+        /// </summary>
+        
+        public string HeadUrl { get; set; }
+		
+        /// <summary>
+        /// 用户状态(1:正常
+        /// </summary>
+        
+        public int? StateCode { get; set; }
+		
+        /// <summary>
+        /// 手机号
+        /// </summary>
+        
+        public string Phone { get; set; }
+		
+        /// <summary>
+        /// 
+        /// </summary>
+        
+        public string Email { get; set; }
+		
+        /// <summary>
         /// 注册时间
         /// </summary>
         
@@ -42,54 +66,6 @@ namespace Mango.Module.Core.Entity
         /// </summary>
         
         public DateTime? LastLoginDate { get; set; }
-		
-        /// <summary>
-        /// 最后登陆IP
-        /// </summary>
-        
-        public string LastLoginIP { get; set; }
-		
-        /// <summary>
-        /// 注册IP地址
-        /// </summary>
-        
-        public string RegisterIP { get; set; }
-		
-        /// <summary>
-        /// 用户状态(true:正常
-        /// </summary>
-        
-        public bool? IsStatus { get; set; }
-		
-        /// <summary>
-        /// 用户头像地址
-        /// </summary>
-        
-        public string HeadUrl { get; set; }
-		
-        /// <summary>
-        /// 
-        /// </summary>
-        
-        public int? GroupId { get; set; }
-		
-        /// <summary>
-        /// 手机号
-        /// </summary>
-        
-        public string Phone { get; set; }
-		
-        /// <summary>
-        /// 开放平台Id
-        /// </summary>
-        
-        public string OpenId { get; set; }
-		
-        /// <summary>
-        /// 
-        /// </summary>
-        
-        public string Email { get; set; }
 		
         /// <summary>
         /// 地区信息
@@ -114,6 +90,12 @@ namespace Mango.Module.Core.Entity
         /// </summary>
         
         public string Sex { get; set; }
+		
+        /// <summary>
+        /// 
+        /// </summary>
+        
+        public int? GroupId { get; set; }
 		
     }
 }

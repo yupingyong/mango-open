@@ -1,40 +1,41 @@
-ï»¿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
+using System.Data;
 using System.ComponentModel.DataAnnotations;
 using Mango.Framework.Data;
 namespace Mango.Module.Core.Entity
 {
-    public class m_UserPlusRecords:EntityBase
+    public partial class m_AccountPlusRecords:EntityBase
     {
+		
         /// <summary>
-        /// è®°å½•Id
+        /// ¼ÇÂ¼Id
         /// </summary>
         [Key]
         public int? RecordsId { get; set; }
-
+		
         /// <summary>
-        /// ç‚¹èµå¯¹è±¡ID
+        /// µãÔŞ¶ÔÏóId
         /// </summary>
-
+        
         public int? ObjectId { get; set; }
-
+		
         /// <summary>
-        /// æ·»åŠ äºº
+        /// Ìí¼ÓÈË
         /// </summary>
-
+        
         public int? UserId { get; set; }
-
+		
         /// <summary>
-        /// æ·»åŠ æ—¶é—´
+        /// Ìí¼ÓÊ±¼ä
         /// </summary>
-
+        
         public DateTime? AppendTime { get; set; }
-
+		
         /// <summary>
-        /// è®°å½•ç±»å‹ 1 å¸–å­ç‚¹èµ 2 å¸–å­å›ç­”ç‚¹èµ 3 å¸–å­è¯„è®ºç‚¹èµ 4 æ–‡æ¡£ä¸»é¢˜ç‚¹èµ 5 æ–‡æ¡£ç‚¹èµ
+        /// ¼ÇÂ¼ÀàĞÍ 1 Ìû×ÓµãÔŞ 2 Ìû×Ó»Ø´ğµãÔŞ 3 Ìû×ÓÆÀÂÛµãÔŞ 4 ÎÄµµµãÔŞ 5 ÎÄµµÏîµãÔŞ
         /// </summary>
-
+        
         public int? RecordsType { get; set; }
+		
     }
 }

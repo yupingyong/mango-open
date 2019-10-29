@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mango.Module.Posts.Controllers
+namespace Mango.Module.CMS.Controllers
 {
-    [Area("Posts")]
+    [Area("CMS")]
     [Route("api/[area]/[controller]")]
     [ApiController]
     public class AddController : ControllerBase

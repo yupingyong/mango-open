@@ -23,8 +23,8 @@ namespace Mango.Module.Core.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var rep = _uow.GetRepository<Entity.m_User>();
-            var userData = rep.Query().Where(q => q.UserId == 2).FirstOrDefault();
+            var rep = _uow.GetRepository<Entity.m_Account>();
+            var userData = rep.Query().Where(q => q.AccountId == 2).FirstOrDefault();
             return new JsonResult(userData);
         }
 

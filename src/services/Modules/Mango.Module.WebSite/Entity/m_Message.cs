@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
-
+using Mango.Framework.Data;
 namespace Mango.Module.WebSite.Entity
 {
-    public partial class m_Message
+    public partial class m_Message:EntityBase
     {
 		
         /// <summary>
