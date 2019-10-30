@@ -2,15 +2,21 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputType>Library</OutputType>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Mango.Module.WebSite.xml</DocumentationFile>
+    <DocumentationFile>Mango.Module.Account.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <None Remove="Mango.Module.Account.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <Content Include="Mango.Module.Account.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +32,11 @@
     <Content Update="module.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="del /S /Q &quot;$(SolutionDir)\Mango.WebHost\Modules\$(ProjectName)\&quot;&#xD;&#xA;xcopy  &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)\Mango.WebHost\Modules\$(ProjectName)\&quot;" />

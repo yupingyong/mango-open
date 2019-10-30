@@ -25,3 +25,6 @@
 /src/services/Mango.WebHost/Modules/Mango.Module.CMS
 /src/services/Modules/Mango.Module.CMS/bin/Debug/netcoreapp3.0
 /src/services/Modules/Mango.Module.CMS/obj
+/src/services/Mango.WebHost/Modules/Mango.Module.Account
+/src/services/Modules/Mango.Module.Account/bin/Debug/netcoreapp3.0
+/src/services/Modules/Mango.Module.Account/obj

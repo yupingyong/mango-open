@@ -25,6 +25,10 @@ namespace Mango.Framework.Module
         /// </summary>
         public string Description { get; set; }
         /// <summary>
+        /// 判断是否属于应用模块(为true则注册到MVC路由中)
+        /// </summary>
+        public bool IsApplicationPart { get; set; }
+        /// <summary>
         /// 模块程序集部件
         /// </summary>
         public Assembly Assembly { get; set; }

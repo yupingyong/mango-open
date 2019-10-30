@@ -30,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Mango.Framework\Mango.Framework.csproj" />
+    <ProjectReference Include="..\Mango.Module.Core\Mango.Module.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="module.json">

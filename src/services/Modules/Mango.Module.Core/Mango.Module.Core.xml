@@ -169,25 +169,5 @@
             记录类型 1 帖子点赞 2 帖子回答点赞 3 帖子评论点赞 4 文档点赞 5 文档项点赞
             </summary>
         </member>
-        <member name="P:Mango.API.ApiModels.AccountRegisterRequestModel.AccountName">
-            <summary>
-            用户账号名
-            </summary>
-        </member>
-        <member name="P:Mango.API.ApiModels.AccountRegisterRequestModel.Password">
-            <summary>
-            登录密码
-            </summary>
-        </member>
-        <member name="P:Mango.API.ApiModels.AccountRegisterRequestModel.NickName">
-            <summary>
-            昵称
-            </summary>
-        </member>
-        <member name="P:Mango.API.ApiModels.AccountRegisterRequestModel.ValidateCode">
-            <summary>
-            邮箱注册验证码
-            </summary>
-        </member>
     </members>
 </doc>

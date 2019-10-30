@@ -70,7 +70,10 @@ namespace Mango.WebHost
             {
                 foreach (var module in GlobalConfiguration.Modules)
                 {
-                    c.SwaggerEndpoint($"/swagger/{module.Name}/swagger.json", $"{module.Name} API");
+                    if (module.IsApplicationPart)
+                    {
+                        c.SwaggerEndpoint($"/swagger/{module.Name}/swagger.json", $"{module.Name} API");
+                    }
                 }
                 c.RoutePrefix = "swagger";
             });
@@ -82,11 +85,14 @@ namespace Mango.WebHost
             {
                 foreach (var module in GlobalConfiguration.Modules)
                 {
-                    endpoints.MapAreaControllerRoute(
-                        name: "area",
-                       areaName: module.Name,
-                       pattern: "api/{area:exists}/{controller}/{id?}"
-                     );
+                    if (module.IsApplicationPart)
+                    {
+                        endpoints.MapAreaControllerRoute(
+                            name: "area",
+                           areaName: module.Name,
+                           pattern: "api/{area:exists}/{controller}/{id?}"
+                         );
+                    }
                 }
                 endpoints.MapGet("/", async context =>
                 {

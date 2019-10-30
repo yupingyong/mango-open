@@ -86,15 +86,18 @@ namespace Mango.WebHost.Extensions
                 //添加每个模块的XML文档
                 foreach (var module in GlobalConfiguration.Modules)
                 {
-                    doc.SwaggerDoc(module.Name, new OpenApiInfo 
-                    { 
-                        Title = $"{module.Name} API", 
-                        Version = module.Version ,
-                        Description=module.Description
-                    });
+                    if (module.IsApplicationPart)
+                    {
+                        doc.SwaggerDoc(module.Name, new OpenApiInfo
+                        {
+                            Title = $"{module.Name} API",
+                            Version = module.Version,
+                            Description = module.Description
+                        });
 
-                    var xmlPath = Path.Combine(contentRootPath, $@"Modules\{module.Id}\{module.Id}.xml");
-                    doc.IncludeXmlComments(xmlPath);
+                        var xmlPath = Path.Combine(contentRootPath, $@"Modules\{module.Id}\{module.Id}.xml");
+                        doc.IncludeXmlComments(xmlPath);
+                    }
                 }
                 doc.DocInclusionPredicate((docName, apiDescription) => {
                     return docName == apiDescription.ActionDescriptor.RouteValues.Where(q => q.Key == "area").FirstOrDefault().Value;
@@ -134,7 +137,10 @@ namespace Mango.WebHost.Extensions
                 });
             foreach (var module in GlobalConfiguration.Modules)
             {
-                AddApplicationPart(mvcBuilder, module.Assembly);
+                if (module.IsApplicationPart)
+                {
+                    AddApplicationPart(mvcBuilder, module.Assembly);
+                }
             }
             return services;
         }
