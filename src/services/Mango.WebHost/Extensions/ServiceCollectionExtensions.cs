@@ -43,6 +43,8 @@ namespace Mango.WebHost.Extensions
         /// <returns></returns>
         public static IServiceCollection AddCustomizedServices(this IServiceCollection services, IConfiguration configuration)
         {
+            //添加默认缓存组件
+            services.AddMemoryCache();
             //添加Redis缓存组件
             services.AddSingleton(typeof(ICacheService), new RedisCacheService(new RedisCacheOptions()
             {
@@ -102,7 +104,7 @@ namespace Mango.WebHost.Extensions
                 doc.DocInclusionPredicate((docName, apiDescription) => {
                     return docName == apiDescription.ActionDescriptor.RouteValues.Where(q => q.Key == "area").FirstOrDefault().Value;
                 });
-                doc.OperationFilter<AddAuthorizationTokenHeaderParameter>();
+                //doc.OperationFilter<AddAuthorizationTokenHeaderParameter>();
             });
             return services;
         }

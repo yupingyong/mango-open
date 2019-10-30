@@ -4,5 +4,37 @@
         <name>Mango.Module.Account</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.Account.Controllers.RegisterController.Post(Mango.Module.Account.Models.RegisterRequestModel)">
+            <summary>
+            账号注册
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mango.Module.Account.Models.RegisterRequestModel">
+            <summary>
+            账号注册请求实体
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.RegisterRequestModel.AccountName">
+            <summary>
+            账号名
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.RegisterRequestModel.Password">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.RegisterRequestModel.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.RegisterRequestModel.ValidateCode">
+            <summary>
+            邮箱注册验证码
+            </summary>
+        </member>
     </members>
 </doc>

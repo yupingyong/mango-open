@@ -4,43 +4,71 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Caching.Memory;
+using Mango.Module.Core.Entity;
+using Mango.Framework.Infrastructure;
+using Mango.Framework.Data;
 namespace Mango.Module.Account.Controllers
 {
+    [Area("Account")]
     [Route("api/[controller]")]
     [ApiController]
     public class RegisterController : ControllerBase
     {
-        // GET: api/Register
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private IUnitOfWork<MangoDbContext> _unitOfWork;
+        private IMemoryCache _memoryCache;
+        public RegisterController(IUnitOfWork<MangoDbContext> unitOfWork, IMemoryCache memoryCache)
         {
-            return new string[] { "value1", "value2" };
+            _unitOfWork = unitOfWork;
+            _memoryCache = memoryCache;
         }
-
-        // GET: api/Register/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Register
+        /// <summary>
+        /// 账号注册
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody]Models.RegisterRequestModel requestModel)
         {
-        }
-
-        // PUT: api/Register/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            string Result = string.Empty;
+            var repository = _unitOfWork.GetRepository<m_Account>();
+            var codeCache = _memoryCache.Get<string>("ValidatePhoneCode");
+            if (codeCache==null)
+            {
+                return APIReturnMethod.ReturnFailed("该手机号与通过短信验证的手机号不一致");
+            }
+            if (requestModel.ValidateCode != codeCache)
+            {
+                return APIReturnMethod.ReturnFailed("请输入正确的注册验证码!");
+            }
+            
+            if (repository.Query().Where(q=>q.AccountName== requestModel.AccountName).Count()>0)
+            {
+                return APIReturnMethod.ReturnFailed("该手机号已经注册过!");
+            }
+            //注册新用户
+            m_Account entity = new m_Account();
+            entity.HeadUrl = "/images/avatar.png";
+            entity.GroupId = 1;
+            entity.StateCode = 1;
+            entity.LastLoginDate = DateTime.Now;
+            entity.NickName = requestModel.NickName;
+            entity.Password = TextHelper.MD5Encrypt(requestModel.Password);
+            entity.Phone = "";
+            entity.RegisterDate = DateTime.Now;
+            entity.AccountName = requestModel.AccountName;
+            entity.Email = "";
+            entity.AddressInfo = "";
+            entity.Birthday = "";
+            entity.Sex = "男";
+            entity.Tags = "";
+            repository.Insert(entity);
+            var resultCount = _unitOfWork.SaveChanges();
+            if (resultCount > 0)
+            {
+                return APIReturnMethod.ReturnSuccess("恭喜您,您的账户已经注册成功!");
+            }
+            return APIReturnMethod.ReturnFailed("抱歉,您的注册失败,请稍后再尝试!");
         }
     }
 }
