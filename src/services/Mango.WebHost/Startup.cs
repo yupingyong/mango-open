@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 
 using Mango.Framework;
 using Mango.Framework.Data;
+using Microsoft.AspNetCore.Diagnostics;
 namespace Mango.WebHost
 {
     public class Startup
@@ -59,46 +60,19 @@ namespace Mango.WebHost
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler(builder => builder.Run(async context => {
+
+                    var feature = context.Features.Get<IExceptionHandlerFeature>();
+                    var error = feature?.Error;
+                }));
             }
             app.UseStaticFiles();
             //启用授权组件
             app.UseIdentityServer();
             app.UseAuthentication();
-            //启用接口文档组件
-            app.UseSwaggerUI(c =>
-            {
-                foreach (var module in GlobalConfiguration.Modules)
-                {
-                    if (module.IsApplicationPart)
-                    {
-                        c.SwaggerEndpoint($"/swagger/{module.Name}/swagger.json", $"{module.Name} API");
-                    }
-                }
-                c.RoutePrefix = "swagger";
-            });
-            app.UseSwagger();
-
-            app.UseRouting();
-            
-            app.UseEndpoints(endpoints =>
-            {
-                foreach (var module in GlobalConfiguration.Modules)
-                {
-                    if (module.IsApplicationPart)
-                    {
-                        endpoints.MapAreaControllerRoute(
-                            name: "area",
-                           areaName: module.Name,
-                           pattern: "api/{area:exists}/{controller}/{id?}"
-                         );
-                    }
-                }
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("webhost start success!");
-                });
-            });
+            //
+            app.UseCustomizedSwagger();
+            app.UseCustomizedMvc();
         }
     }
 }

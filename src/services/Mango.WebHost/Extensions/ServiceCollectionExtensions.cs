@@ -117,12 +117,13 @@ namespace Mango.WebHost.Extensions
         public static IServiceCollection AddModules(this IServiceCollection services, string contentRootPath)
         {
             GlobalConfiguration.Modules = _moduleConfigurationManager.GetModules();
+            ModuleAssemblyLoadContext context = new ModuleAssemblyLoadContext();
             foreach (var module in GlobalConfiguration.Modules)
             {
                 //
                 var moduleFolder = new DirectoryInfo(Path.Combine(contentRootPath, $@"Modules\{module.Id}\{module.Id}.dll"));
-                Assembly assembly = Assembly.LoadFile(moduleFolder.FullName);
-                module.Assembly = assembly;
+                module.Assembly = context.LoadFromAssemblyPath(moduleFolder.FullName);
+                
             }
             return services;
         }
@@ -139,10 +140,7 @@ namespace Mango.WebHost.Extensions
                 });
             foreach (var module in GlobalConfiguration.Modules)
             {
-                if (module.IsApplicationPart)
-                {
-                    AddApplicationPart(mvcBuilder, module.Assembly);
-                }
+                AddApplicationPart(mvcBuilder, module.Assembly);
             }
             return services;
         }
