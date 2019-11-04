@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mango.Module.Account.Common.Aliyun
+namespace Mango.Module.Core.Common.Aliyun
 {
     public class SmsObject
     {

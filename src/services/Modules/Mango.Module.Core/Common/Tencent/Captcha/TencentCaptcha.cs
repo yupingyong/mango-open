@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-namespace Mango.Common.Tencent.Captcha
+namespace Mango.Module.Core.Common.Tencent.Captcha
 {
     public class TencentCaptcha
     {
@@ -15,8 +15,8 @@ namespace Mango.Common.Tencent.Captcha
         /// <returns></returns>
         public bool QueryTencentCaptcha(string ticket, string randstr, string userIP)
         {
-            string aid = Framework.Core.Configuration.GetItem("Tencent_VerificationAppId");
-            string appSecretKey = Framework.Core.Configuration.GetItem("Tencent_VerificationAppSecretKey");
+            string aid = ModuleConfigurationManager.Tencent.Captcha.AppId;
+            string appSecretKey = ModuleConfigurationManager.Tencent.Captcha.SecretKey;
             string url = "https://ssl.captcha.qq.com/ticket/verify";
             string p = string.Format("aid={0}&AppSecretKey={1}&Ticket={2}&Randstr={3}&UserIP={4}", aid, appSecretKey, ticket, randstr, userIP);
             Framework.Core.HttpWebRequestHelper http = new Framework.Core.HttpWebRequestHelper();

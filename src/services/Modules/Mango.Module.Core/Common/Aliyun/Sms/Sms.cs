@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace Mango.Module.Account.Common.Aliyun
+namespace Mango.Module.Core.Common.Aliyun
 {
     public class Sms
     {

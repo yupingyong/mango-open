@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Common.Tencent.Captcha
+namespace Mango.Module.Core.Common.Tencent.Captcha
 {
     public class TencentCaptchaResult
     {

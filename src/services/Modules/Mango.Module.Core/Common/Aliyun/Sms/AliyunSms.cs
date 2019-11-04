@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-namespace Mango.Module.Account.Common.Aliyun
+namespace Mango.Module.Core.Common.Aliyun
 {
     public class AliyunSms
     {

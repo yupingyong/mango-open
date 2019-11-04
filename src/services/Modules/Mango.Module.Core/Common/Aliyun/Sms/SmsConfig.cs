@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Module.Core.Common.Aliyun.Sms
+namespace Mango.Module.Core.Common.Aliyun
 {
     public class SmsConfig
     {

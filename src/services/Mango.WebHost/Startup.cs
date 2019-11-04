@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 
 using Mango.Framework;
 using Mango.Framework.Data;
+using Mango.Module.Core;
 using Microsoft.AspNetCore.Diagnostics;
 namespace Mango.WebHost
 {
@@ -76,6 +77,8 @@ namespace Mango.WebHost
 
             app.UseCustomizedModuleConfigure(env);
             //≈‰÷√Œƒº˛∂¡»°
+            ModuleConfigurationManager.Aliyun = Configuration.GetSection("Aliyun").Get<Module.Core.Common.Aliyun.AliyunConfig>();
+            ModuleConfigurationManager.Tencent = Configuration.GetSection("Tencent").Get<Module.Core.Common.Tencent.TencentConfig>();
         }
     }
 }
