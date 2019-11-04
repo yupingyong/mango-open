@@ -73,6 +73,9 @@ namespace Mango.WebHost
             //
             app.UseCustomizedSwagger();
             app.UseCustomizedMvc();
+
+            app.UseCustomizedModuleConfigure(env);
+            //ÅäÖÃÎÄ¼ş¶ÁÈ¡
         }
     }
 }

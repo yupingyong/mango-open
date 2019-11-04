@@ -123,7 +123,8 @@ namespace Mango.WebHost.Extensions
                 //
                 var moduleFolder = new DirectoryInfo(Path.Combine(contentRootPath, $@"Modules\{module.Id}\{module.Id}.dll"));
                 module.Assembly = context.LoadFromAssemblyPath(moduleFolder.FullName);
-                
+                //
+                RegisterModuleInitializerServices(module, ref services);
             }
             return services;
         }
@@ -165,6 +166,15 @@ namespace Mango.WebHost.Extensions
                 {
                     mvcBuilder.PartManager.ApplicationParts.Add(part);
                 }
+            }
+        }
+        private static void RegisterModuleInitializerServices(ModuleInfo module, ref IServiceCollection services)
+        {
+            var moduleInitializerType = module.Assembly.GetTypes()
+                    .FirstOrDefault(t => typeof(IModuleInitializer).IsAssignableFrom(t));
+            if ((moduleInitializerType != null) && (moduleInitializerType != typeof(IModuleInitializer)))
+            {
+                services.AddSingleton(typeof(IModuleInitializer), moduleInitializerType);
             }
         }
     }

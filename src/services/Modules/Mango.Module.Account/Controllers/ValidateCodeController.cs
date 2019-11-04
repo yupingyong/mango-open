@@ -24,7 +24,7 @@ namespace Mango.Module.Account.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]string phone, [FromQuery]string ticket, [FromQuery]string randstr)
         {
-            
+            return APIReturnMethod.ReturnSuccess();
         }
     }
 }
