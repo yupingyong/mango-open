@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Module.Core.Common.Tencent.Captcha
+namespace Mango.Framework.Services.Tencent.Captcha
 {
-    public class TencentCaptchaResult
+    internal class TencentCaptchaResult
     {
         /// <summary>
         /// 1:验证成功，0:验证失败，100:AppSecretKey参数校验错误[required]

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Module.Core.Common.Aliyun
+namespace Mango.Framework.Services.Aliyun.Sms
 {
-    public class SmsConfig
+    public class SmsOptions
     {
         /// <summary>
         /// 短信签名

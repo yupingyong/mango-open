@@ -144,29 +144,76 @@
             
             </summary>
         </member>
-        <member name="P:Mango.Module.Core.Entity.m_AccountPlusRecords.RecordsId">
+        <member name="P:Mango.Module.Core.Entity.m_Message.MessageId">
             <summary>
-            记录Id
+            消息Id
             </summary>
         </member>
-        <member name="P:Mango.Module.Core.Entity.m_AccountPlusRecords.ObjectId">
+        <member name="P:Mango.Module.Core.Entity.m_Message.MessageType">
             <summary>
-            点赞对象Id
+            消息类型
+            系统消息: 0:系统通知
+            帖子消息: 10:帖子回复消息,11:帖子评论消息,12:帖子点赞消息,13:回复点赞消息,14:评论点赞消息
             </summary>
         </member>
-        <member name="P:Mango.Module.Core.Entity.m_AccountPlusRecords.UserId">
+        <member name="P:Mango.Module.Core.Entity.m_Message.Contents">
             <summary>
-            添加人
+            内容
             </summary>
         </member>
-        <member name="P:Mango.Module.Core.Entity.m_AccountPlusRecords.AppendTime">
+        <member name="P:Mango.Module.Core.Entity.m_Message.PostDate">
             <summary>
-            添加时间
+            提交时间
             </summary>
         </member>
-        <member name="P:Mango.Module.Core.Entity.m_AccountPlusRecords.RecordsType">
+        <member name="P:Mango.Module.Core.Entity.m_Message.UserId">
             <summary>
-            记录类型 1 帖子点赞 2 帖子回答点赞 3 帖子评论点赞 4 文档点赞 5 文档项点赞
+            消息接收用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Message.AppendUserId">
+            <summary>
+            产生消息用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Message.ObjId">
+            <summary>
+            存储对象Id(PostId ShareId)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Message.IsRead">
+            <summary>
+            是否已经阅读
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.SmsID">
+            <summary>
+            短信ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.Phone">
+            <summary>
+            短信手机号
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.Contents">
+            <summary>
+            短信内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.SendTime">
+            <summary>
+            发送时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.SendIP">
+            <summary>
+            发送IP地址
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Core.Entity.m_Sms.IsOk">
+            <summary>
+            是否发送成功
             </summary>
         </member>
     </members>

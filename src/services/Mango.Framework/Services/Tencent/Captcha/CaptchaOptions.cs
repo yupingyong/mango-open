@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Module.Core.Common.Tencent.Captcha
+namespace Mango.Framework.Services.Tencent.Captcha
 {
-    public class CaptchaConfig
+    public class CaptchaOptions
     {
         public string AppId { get; set; }
         public string SecretKey { get; set; }

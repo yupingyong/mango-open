@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-namespace Mango.Module.Core.Common.Tencent.Captcha
+using Mango.Framework.Infrastructure;
+namespace Mango.Framework.Services.Tencent.Captcha
 {
-    public class TencentCaptcha
+    public class TencentCaptcha:ITencentCaptcha
     {
+        private CaptchaOptions _captchaOptions;
+        public TencentCaptcha(CaptchaOptions captchaOptions)
+        {
+            _captchaOptions = captchaOptions;
+        }
         /// <summary>
         /// 腾讯验证码服务端验证结果查询
         /// </summary>
@@ -15,12 +21,9 @@ namespace Mango.Module.Core.Common.Tencent.Captcha
         /// <returns></returns>
         public bool QueryTencentCaptcha(string ticket, string randstr, string userIP)
         {
-            string aid = ModuleConfigurationManager.Tencent.Captcha.AppId;
-            string appSecretKey = ModuleConfigurationManager.Tencent.Captcha.SecretKey;
             string url = "https://ssl.captcha.qq.com/ticket/verify";
-            string p = string.Format("aid={0}&AppSecretKey={1}&Ticket={2}&Randstr={3}&UserIP={4}", aid, appSecretKey, ticket, randstr, userIP);
-            Framework.Core.HttpWebRequestHelper http = new Framework.Core.HttpWebRequestHelper();
-            string httpResult = http.HttpGet(string.Format("{0}?{1}", url, p));
+            string p = string.Format("aid={0}&AppSecretKey={1}&Ticket={2}&Randstr={3}&UserIP={4}", _captchaOptions.AppId, _captchaOptions.SecretKey, ticket, randstr, userIP);
+            string httpResult = HttpHelper.Get(string.Format("{0}?{1}", url, p));
             TencentCaptchaResult tencentCaptchaResult = JsonConvert.DeserializeObject<TencentCaptchaResult>(httpResult);
             return tencentCaptchaResult.response == 1 ? true : false;
         }

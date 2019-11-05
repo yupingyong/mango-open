@@ -8,9 +8,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-namespace Mango.Module.Core.Common.Aliyun
+namespace Mango.Framework.Services.Aliyun.Sms
 {
-    public class AliyunSms
+    internal class AliyunSms
     {
         private string RegionId = "cn-hangzhou";
         private string Version = "2017-05-25";
@@ -26,7 +26,7 @@ namespace Mango.Module.Core.Common.Aliyun
         private string AccessKeyId;
         private string AccessKeySecret;
 
-        public AliyunSms(string accessKeyId, string accessKeySecret)
+        internal AliyunSms(string accessKeyId, string accessKeySecret)
         {
             this.AccessKeyId = accessKeyId;
             this.AccessKeySecret = accessKeySecret;
@@ -35,7 +35,7 @@ namespace Mango.Module.Core.Common.Aliyun
         /// <summary>
         /// 发送短信
         /// </summary>
-        public async Task<(bool success, string response)> Send(SmsObject sms)
+        internal async Task<(bool success, string response)> Send(SmsObject sms)
         {
             var paramers = new Dictionary<string, string>();
             paramers.Add("PhoneNumbers", sms.Mobile);
@@ -118,7 +118,7 @@ namespace Mango.Module.Core.Common.Aliyun
         /// <summary>
         /// 签名
         /// </summary>
-        public static string SignString(string source, string accessSecret)
+        internal static string SignString(string source, string accessSecret)
         {
             using (var algorithm = new HMACSHA1(Encoding.UTF8.GetBytes(accessSecret.ToCharArray())))
             {
@@ -166,7 +166,7 @@ namespace Mango.Module.Core.Common.Aliyun
             return sb.ToString();
         }
 
-        public static string PercentEncode(string value)
+        internal static string PercentEncode(string value)
         {
             StringBuilder stringBuilder = new StringBuilder();
             string text = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~";

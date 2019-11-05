@@ -4,10 +4,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace Mango.Module.Core.Common.Aliyun
+namespace Mango.Framework.Services.Aliyun.Sms
 {
-    public class Sms
+    public class SmsSend: IAliyunSmsSend
     {
+        private AliyunOptions _aliyunOptions;
+        private SmsOptions _smsOptions;
+        public SmsSend(AliyunOptions aliyunOptions,SmsOptions smsOptions)
+        {
+            _aliyunOptions = aliyunOptions;
+            _smsOptions = smsOptions;
+        }
         /// <summary>
         /// 发送短信验证码
         /// </summary>
@@ -21,13 +28,13 @@ namespace Mango.Module.Core.Common.Aliyun
                 var sms = new SmsObject
                 {
                     Mobile = phone,
-                    Signature = Configuration.GetItem("Aliyun_SmsSignature"),
-                    TempletKey = Configuration.GetItem("Aliyun_SmsTempletKey"),
+                    Signature = _smsOptions.SmsSignature,
+                    TempletKey = _smsOptions.SmsTempletKey,
                     Data = data,
                     OutId = "OutId"
                 };
 
-                return await new AliyunSms(Configuration.GetItem("Aliyun_AccessKeyId"), Configuration.GetItem("Aliyun_AccessKeySecret")).Send(sms);
+                return await new AliyunSms(_aliyunOptions.AccessKeyId, _aliyunOptions.AccessKeySecret).Send(sms);
                 
             }
             catch

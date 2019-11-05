@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mango.Framework\Mango.Framework.csproj" />
-    <ProjectReference Include="..\Modules\Mango.Module.Core\Mango.Module.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

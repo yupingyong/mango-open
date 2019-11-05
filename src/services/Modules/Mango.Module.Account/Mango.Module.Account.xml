@@ -17,6 +17,15 @@
             <param name="requestModel"></param>
             <returns></returns>
         </member>
+        <member name="M:Mango.Module.Account.Controllers.ValidateCodeController.Get(System.String,System.String,System.String)">
+            <summary>
+            获取验证码
+            </summary>
+            <param name="phone"></param>
+            <param name="ticket"></param>
+            <param name="randstr"></param>
+            <returns></returns>
+        </member>
         <member name="T:Mango.Module.Account.Models.AcountDataModel">
             <summary>
             账号信息数据实体

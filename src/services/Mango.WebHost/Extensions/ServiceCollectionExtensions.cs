@@ -23,6 +23,11 @@ using Mango.Framework;
 using Mango.Framework.Data;
 using Mango.Framework.Services;
 using Mango.Framework.Services.Cache;
+using Mango.Framework.Services.Aliyun;
+using Mango.Framework.Services.Aliyun.Sms;
+using Mango.Framework.Services.Tencent;
+using Mango.Framework.Services.Tencent.Captcha;
+
 using Mango.Framework.Converter;
 using Mango.Framework.Module;
 using Mango.Framework.Authorization;
@@ -51,6 +56,14 @@ namespace Mango.WebHost.Extensions
                 Configuration = configuration.GetSection("Cache:ConnectionString").Value,
                 InstanceName = configuration.GetSection("Cache:InstanceName").Value
             }));
+            //添加阿里云组件
+            services.AddSingleton(typeof(IAliyunSmsSend),new SmsSend(new AliyunOptions() { 
+                AccessKeyId=configuration.GetSection("Aliyun:AccessKeyId").Value,
+                AccessKeySecret= configuration.GetSection("Aliyun:AccessKeySecret").Value
+            }, configuration.GetSection("Aliyun:Sms").Get<SmsOptions>()));
+            //添加腾讯相关组件
+            services.AddSingleton(typeof(ITencentCaptcha), new TencentCaptcha(configuration.GetSection("Tencent:Captcha").Get<CaptchaOptions>()));
+
             ServiceContext.RegisterServices(services.BuildServiceProvider());
             return services;
         }
@@ -141,7 +154,10 @@ namespace Mango.WebHost.Extensions
                 });
             foreach (var module in GlobalConfiguration.Modules)
             {
-                AddApplicationPart(mvcBuilder, module.Assembly);
+                if (module.IsApplicationPart)
+                {
+                    AddApplicationPart(mvcBuilder, module.Assembly);
+                }
             }
             return services;
         }

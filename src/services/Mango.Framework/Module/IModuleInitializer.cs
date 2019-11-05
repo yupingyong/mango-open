@@ -4,7 +4,6 @@ using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
-
 namespace Mango.Framework.Module
 {
     public interface IModuleInitializer
