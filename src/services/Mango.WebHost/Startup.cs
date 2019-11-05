@@ -75,11 +75,7 @@ namespace Mango.WebHost
             app.UseCustomizedMvc();
 
             app.UseCustomizedModuleConfigure(env);
-            //≈‰÷√Œƒº˛∂¡»°
-            //var aaa = Configuration.GetSection("Aliyun").Get<Module.Core.Common.Aliyun.AliyunConfig>();
-            //ModuleConfigurationManager.Aliyun = aaa;
 
-            //ModuleConfigurationManager.Tencent.Captcha = Configuration.GetSection("Tencent:Captcha").Get<Module.Core.Common.Tencent.Captcha.CaptchaConfig>();
         }
     }
 }
