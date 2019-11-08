@@ -135,7 +135,8 @@ namespace Mango.WebHost.Extensions
             {
                 //
                 var moduleFolder = new DirectoryInfo(Path.Combine(contentRootPath, $@"Modules\{module.Id}\{module.Id}.dll"));
-                module.Assembly = context.LoadFromAssemblyPath(moduleFolder.FullName);
+                using FileStream fs = new FileStream(moduleFolder.FullName, FileMode.Open);
+                module.Assembly = context.LoadFromStream(fs);
                 //
                 RegisterModuleInitializerServices(module, ref services);
             }
