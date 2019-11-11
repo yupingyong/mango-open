@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "导航";
+}
+
+@model Mango.Web.ViewModels.NavigationViewModel
+<div class="row">
+
+    <div class="col-lg-12" id="showNavigationMain">
+        @foreach (var item in Model.ClassifyListData)
+        {
+            <div class="my-2 p-1 bg-white rounded box-shadow" data-id="@item.CId">
+                <h5 class="border-bottom border-gray pb-2 mb-0">@item.ClassifyName</h5>
+                <div class="row text" style="padding-top:5px;" id="showNavigationList@(item.CId)">
+                    @{ var navs = Model.NavigationsData.Where(q => q.CId == item.CId).ToList();}
+                    @foreach (var j in navs)
+                    {
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">@j.NavigationName</h6>
+                                    <p class="card-text" style="font-size:12px;">@j.Remark</p>
+                                    <a href="javascript:UpdateCount(@(j.NavigationId),'@(j.NavigationUrl)');" class="btn btn-primary">点击浏览<span class="badge badge-light" style="margin-left:3px;">@(j.ClickCount)</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function UpdateCount(id, url) {
+            $.ajax({
+                type: 'post',
+                url: '/navigation/UpdateClickCount',
+                data: 'navigationId=' + id,
+                success: function (res) {
+                    if (res) {
+                        console.log("UpdateCount:" + res);
+                    }
+                }
+            });
+            window.open(url, "51coreLink");
+        }
+    </script>
+}

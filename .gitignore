@@ -33,3 +33,4 @@
 /src/application/Mango.Web/obj
 /src/application/Mango.Core/bin/Debug/netcoreapp3.0
 /src/application/Mango.Core/obj
+/src/application/Mango.Web/bin/Release/netcoreapp3.0
