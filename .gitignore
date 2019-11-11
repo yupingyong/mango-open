@@ -28,3 +28,6 @@
 /src/services/Mango.WebHost/Modules/Mango.Module.Account
 /src/services/Modules/Mango.Module.Account/bin/Debug/netcoreapp3.0
 /src/services/Modules/Mango.Module.Account/obj
+/src/application/.vs/Mango.App
+/src/application/Mango.Web/bin/Debug/netcoreapp3.0
+/src/application/Mango.Web/obj

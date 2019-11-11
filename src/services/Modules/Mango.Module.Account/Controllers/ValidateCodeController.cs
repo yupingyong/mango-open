@@ -15,7 +15,7 @@ using Mango.Framework.Services.Aliyun.Sms;
 namespace Mango.Module.Account.Controllers
 {
     [Area("Account")]
-    [Route("api/[controller]")]
+    [Route("api/[area]/[controller]")]
     [ApiController]
     public class ValidateCodeController : ControllerBase
     {
