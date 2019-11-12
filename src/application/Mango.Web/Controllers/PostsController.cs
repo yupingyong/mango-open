@@ -29,7 +29,7 @@ namespace Mango.Web.Controllers
         {
             ViewModels.PostsViewModel viewModel = new ViewModels.PostsViewModel();
             //获取频道数据
-            var apiResult = HttpCore.HttpGet(ApiServerConfig.Posts_GetPostsChannelList);
+            var apiResult = HttpCore.HttpGet(ApiServerConfig.CMS_GetChannel);
             if (apiResult.Code == 0)
             {
                 viewModel.PostsChannelData = JsonConvert.DeserializeObject<List<Models.PostsChannelModel>>(apiResult.Data.ToString());

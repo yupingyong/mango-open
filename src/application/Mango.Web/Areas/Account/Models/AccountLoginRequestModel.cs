@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace Mango.Web.ViewModels
+namespace Mango.Web.Areas.Account.Models
 {
     public class AccountLoginRequestModel
     {

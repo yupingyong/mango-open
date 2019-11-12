@@ -32,7 +32,7 @@
             </div>
             <div class="navbar-right" id="navbarCollapse" style="float:right;display:block;">
 
-                @if (Html.ViewContext.HttpContext.Session.GetString("UserId") == null)
+                @if (Html.ViewContext.HttpContext.Session.GetInt32("UserId") == null)
                 {
                     <ul class="navbar-nav mr-auto">
                         @if (model.WebSiteConfigData.IsLogin)
@@ -57,8 +57,8 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/user/myposts/add">发布新帖</a>
-                                <a class="dropdown-item" href="/user/mydocs/addtheme">发布文档主题</a>
+                                <a class="dropdown-item" href="/cms/release">发布文章</a>
+                                <a class="dropdown-item" href="/docs/release/theme">发布文档</a>
                                 <a class="dropdown-item" href="/user/info">个人中心</a>
                                 <a class="dropdown-item" href="/passport/outlogin">退出登录</a>
                             </div>

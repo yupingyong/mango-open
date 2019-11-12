@@ -68,7 +68,7 @@ namespace Mango.Web.Common
         /// <summary>
         /// 获取频道数据
         /// </summary>
-        public static string Posts_GetPostsChannelList{ get; set; } = "/api/Posts/GetPostsChannelList";
+        public static string CMS_GetChannel{ get; set; } = "/api/CMS/Channel";
         #endregion
         #region 公共数据接口
         /// <summary>

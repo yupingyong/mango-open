@@ -53,7 +53,7 @@ namespace Mango.Module.CMS.Controllers
                     StateCode = ca.c.StateCode.Value,
                     Title = ca.c.Title
                 })
-                .Where(q => q.StateCode == 1&&q.ChannelId==channelId)
+                .Where(q => q.StateCode == 1 && q.ChannelId == channelId)
                 .OrderByDescending(q => q.ContentsId);
             Models.ContentsListResultModel resultModel = new Models.ContentsListResultModel();
             resultModel.ListData = query.Skip(10 * (p - 1)).Take(10).ToList();

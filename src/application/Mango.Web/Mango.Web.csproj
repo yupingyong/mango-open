@@ -55,11 +55,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Account\Data\" />
-    <Folder Include="Areas\Account\Models\" />
-    <Folder Include="Areas\Account\Views\" />
     <Folder Include="Areas\Cms\Data\" />
-    <Folder Include="Areas\Cms\Models\" />
-    <Folder Include="Areas\Cms\Views\" />
     <Folder Include="Areas\Docs\Data\" />
     <Folder Include="Areas\Docs\Models\" />
     <Folder Include="Areas\Docs\Views\" />

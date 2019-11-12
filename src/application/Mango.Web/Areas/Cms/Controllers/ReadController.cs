@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mango.Web.Areas.Cms.Controllers
 {
+    [Area("Cms")]
     public class ReadController : Controller
     {
         public IActionResult Index()
