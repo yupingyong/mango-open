@@ -17,14 +17,14 @@ namespace Mango.Web.ViewModels
         /// <summary>
         /// 文档主题数据
         /// </summary>
-        public Mango.Models.DocsThemeModel DocsThemeData { get; set; }
+        public Models.DocsThemeModel DocsThemeData { get; set; }
         /// <summary>
         /// 文档数据
         /// </summary>
-        public Mango.Models.DocsModel DocsData { get; set; }
+        public Models.DocsModel DocsData { get; set; }
         /// <summary>
         /// 文档列表数据
         /// </summary>
-        public List<Mango.Models.DocsListModel> ItemsListData { get; set; }
+        public List<Models.DocsListModel> ItemsListData { get; set; }
     }
 }

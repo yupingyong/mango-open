@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkId=397860
-using Mango.Models;
+using Mango.Web.Models;
 namespace Mango.Web.Areas.User.Controllers
 {
     [Area("User")]

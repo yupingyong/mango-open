@@ -15,12 +15,12 @@ namespace Mango.Web.Common
         public ViewModels.WebSiteViewModel GetWebSiteData()
         {
             ViewModels.WebSiteViewModel viewModel = new ViewModels.WebSiteViewModel();
-            var apiResult = HttpCore.HttpGet(ApiServerConfig.MainData_GetWebSiteNavigation);
+            var apiResult = HttpCore.HttpGet(ApiServerConfig.WebSite_GetWebSiteNavigation);
             if (apiResult.Code == 0)
             {
                 viewModel.WebSiteNavigationData = JsonConvert.DeserializeObject<List<Models.WebSiteNavigationModel>>(apiResult.Data.ToString());
             }
-            apiResult= HttpCore.HttpGet(ApiServerConfig.MainData_GetWebSiteConfig);
+            apiResult= HttpCore.HttpGet(ApiServerConfig.WebSite_GetWebSiteConfig);
             if (apiResult.Code == 0)
             {
                 viewModel.WebSiteConfigData = JsonConvert.DeserializeObject<Models.WebSiteConfigModel>(apiResult.Data.ToString());

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Mango.Models;
+using Mango.Web.Models;
 namespace Mango.Web.ViewModels
 {
     public class NavigationViewModel

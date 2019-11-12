@@ -48,7 +48,7 @@ namespace Mango.Web.Common
         /// </summary>
         public static string Docs_GetDocsThemeList { get; set; } = "/api/Docs/GetDocsThemeList";
         #endregion
-        #region 帖子模块接口
+        #region CMS模块接口
         /// <summary>
         /// 获取帖子回复列表数据
         /// </summary>
@@ -74,11 +74,11 @@ namespace Mango.Web.Common
         /// <summary>
         /// 获取网站顶部导航数据接口
         /// </summary>
-        public static string MainData_GetWebSiteNavigation { get; set; } = "/api/MainData/GetWebSiteNavigation";
+        public static string WebSite_GetWebSiteNavigation { get; set; } = "/api/WebSite/Base/navigation";
         /// <summary>
         /// 获取网站基本设置数据接口
         /// </summary>
-        public static string MainData_GetWebSiteConfig{ get; set; } = "/api/MainData/GetWebSiteConfig";
+        public static string WebSite_GetWebSiteConfig { get; set; } = "/api/WebSite/Base/config";
         #endregion
     }
 }

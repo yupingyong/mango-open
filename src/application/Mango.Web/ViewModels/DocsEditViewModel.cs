@@ -7,6 +7,6 @@ namespace Mango.Web.ViewModels
 {
     public class DocsEditViewModel
     {
-        public Mango.Models.DocsModel DocsData { get; set; }
+        public Mango.Web.Models.DocsModel DocsData { get; set; }
     }
 }

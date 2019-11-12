@@ -69,12 +69,26 @@ namespace Mango.Web
             {
                 endpoints.MapAreaControllerRoute(
                    name: "area",
-                   areaName: "User",
-                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   areaName: "Account",
+                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                endpoints.MapAreaControllerRoute(
+                   name: "area",
+                   areaName: "Docs",
+                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
 
+                endpoints.MapAreaControllerRoute(
+                   name: "area",
+                   areaName: "Cms",
+                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                   name: "area",
+                   areaName: "User",
+                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                //
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Portal}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
             Core.Configuration.AddItem("ApiServerUrl", Configuration.GetSection("ApiServer:ApiServerUrl").Value);

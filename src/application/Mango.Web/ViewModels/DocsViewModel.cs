@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Mango.Models;
+using Mango.Web.Models;
 namespace Mango.Web.ViewModels
 {
     public class DocsViewModel

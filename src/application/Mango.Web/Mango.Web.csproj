@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <None Include="bundleconfig.json" />
-    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Portal\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_CookieConsentPartial.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
@@ -28,6 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -49,6 +50,19 @@
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Account\Data\" />
+    <Folder Include="Areas\Account\Models\" />
+    <Folder Include="Areas\Account\Views\" />
+    <Folder Include="Areas\Cms\Data\" />
+    <Folder Include="Areas\Cms\Models\" />
+    <Folder Include="Areas\Cms\Views\" />
+    <Folder Include="Areas\Docs\Data\" />
+    <Folder Include="Areas\Docs\Models\" />
+    <Folder Include="Areas\Docs\Views\" />
   </ItemGroup>
 
 </Project>

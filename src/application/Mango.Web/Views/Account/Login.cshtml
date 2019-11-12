@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "用户登录";
     Mango.Web.Common.WebSite webSite = new Mango.Web.Common.WebSite();
-    Mango.Models.WebSiteConfigModel configData = webSite.GetWebSiteData().WebSiteConfigData;
+    Mango.Web.Models.WebSiteConfigModel configData = webSite.GetWebSiteData().WebSiteConfigData;
 }
 
 @if (configData.IsLogin)
