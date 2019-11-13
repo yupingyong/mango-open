@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "知问";
+    ViewData["Title"] = "文章";
 }
 @model Mango.Web.ViewModels.PostsViewModel
 
@@ -26,7 +26,7 @@
             <ul class="pagination">
                 @if (Model.TotalCount > 0)
                 {
-                    @Html.Pager(ViewContext.HttpContext.Request, 10, Model.TotalCount)
+                    @Html.Pager(ViewContext.HttpContext.Request, Model.TotalCount)
                 }
                 else
                 {

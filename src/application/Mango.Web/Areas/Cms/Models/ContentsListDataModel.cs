@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mango.Module.CMS.Models
+namespace Mango.Web.Areas.Cms.Models
 {
     public class ContentsListDataModel
     {

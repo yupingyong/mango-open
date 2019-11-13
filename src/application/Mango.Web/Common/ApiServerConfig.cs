@@ -54,13 +54,13 @@ namespace Mango.Web.Common
         /// </summary>
         public static string Posts_GetPostsAnswerList { get; set; } = "/api/Posts/GetPostsAnswerList";
         /// <summary>
-        /// 根据帖子ID获取帖子数据
+        /// 获取CMS文章列表(/api/CMS/Content/{p} or /api/CMS/Content/{channelId}/{p})
         /// </summary>
-        public static string Posts_GetPostsById { get; set; } = "/api/Posts/GetPostsById";
+        public static string CMS_ContentsList { get; set; } = "/api/CMS/Content";
         /// <summary>
-        /// 获取热门帖子数据
+        /// 获取自定义类型的数据(/api/CMS/Content/customize/{type}/{count})
         /// </summary>
-        public static string Posts_GetPostsByHot { get; set; } = "/api/Posts/GetPostsByHot";
+        public static string CMS_GetContentsCustomizeList { get; set; } = "/api/CMS/Content/customize";
         /// <summary>
         /// 获取帖子列表数据
         /// </summary>

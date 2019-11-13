@@ -204,7 +204,7 @@
         </member>
         <member name="P:Mango.Module.CMS.Models.ContentsListDataModel.ContentsId">
             <summary>
-            帖子Id
+            内容Id
             </summary>
         </member>
         <member name="P:Mango.Module.CMS.Models.ContentsListDataModel.Title">

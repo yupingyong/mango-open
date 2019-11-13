@@ -55,10 +55,9 @@ namespace Mango.Module.CMS.Controllers
                 })
                 .Where(q => q.StateCode == 1 && q.ChannelId == channelId)
                 .OrderByDescending(q => q.ContentsId);
-            Models.ContentsListResultModel resultModel = new Models.ContentsListResultModel();
-            resultModel.ListData = query.Skip(10 * (p - 1)).Take(10).ToList();
-            resultModel.TotalCount = query.Count();
-            return APIReturnMethod.ReturnSuccess(resultModel);
+
+            var resultData = query.Skip(10 * (p - 1)).Take(10).ToList();
+            return APIReturnMethod.ReturnSuccess(resultData);
         }
         /// <summary>
         /// 按照分页获取内容列表
@@ -91,10 +90,8 @@ namespace Mango.Module.CMS.Controllers
                 })
                 .Where(q => q.StateCode == 1)
                 .OrderByDescending(q => q.ContentsId);
-            Models.ContentsListResultModel resultModel = new Models.ContentsListResultModel();
-            resultModel.ListData = query.Skip(10 * (p - 1)).Take(10).ToList();
-            resultModel.TotalCount = query.Count();
-            return APIReturnMethod.ReturnSuccess(resultModel);
+            var resultData = query.Skip(10 * (p - 1)).Take(10).ToList();
+            return APIReturnMethod.ReturnSuccess(resultData);
         }
         /// <summary>
         /// 根据自定义类型获取
@@ -128,21 +125,17 @@ namespace Mango.Module.CMS.Controllers
                 })
                 .Where(q => q.StateCode == 1);
 
-            Models.ContentsListResultModel resultModel = new Models.ContentsListResultModel();
+            List<Models.ContentsListDataModel> resultData=new List<Models.ContentsListDataModel>();
             switch (type)
             {
                 case "new":
-                    resultModel.ListData = query.OrderByDescending(q=>q.ContentsId).Take(count).ToList();
+                    resultData = query.OrderByDescending(q=>q.ContentsId).Take(count).ToList();
                     break;
                 case "hot":
-                    resultModel.ListData = query.OrderByDescending(q => q.ReadCount).Where(q => q.PostTime >= DateTime.Now.AddDays(-7)).Take(10).ToList();
+                    resultData = query.OrderByDescending(q => q.ReadCount).Where(q => q.PostTime >= DateTime.Now.AddDays(-7)).Take(10).ToList();
                     break;
             }
-                
-           
-            
-            resultModel.TotalCount = 0;
-            return APIReturnMethod.ReturnSuccess(resultModel);
+            return APIReturnMethod.ReturnSuccess(resultData);
         }
         /// <summary>
         /// 内容编辑

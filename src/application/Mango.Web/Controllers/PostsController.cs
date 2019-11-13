@@ -59,7 +59,7 @@ namespace Mango.Web.Controllers
             //获取帖子详情数据
             var requestData = new Dictionary<string, object>();
             requestData.Add("postsId", id);
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Posts_GetPostsById}?{HttpParameter.ToUrlParameter(requestData)}");
+            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_GetContentsCustomizeList}?{HttpParameter.ToUrlParameter(requestData)}");
             if (apiResult.Code == 0)
             {
                 viewModel.PostsData = JsonConvert.DeserializeObject<Models.PostsModel>(apiResult.Data.ToString());
