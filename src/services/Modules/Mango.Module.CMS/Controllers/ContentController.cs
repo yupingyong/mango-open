@@ -35,7 +35,7 @@ namespace Mango.Module.CMS.Controllers
             var repository = _unitOfWork.GetRepository<Entity.m_CmsContents>();
             var channelRepository = _unitOfWork.GetRepository<Entity.m_CmsChannel>();
             var accountRepository = _unitOfWork.GetRepository<m_Account>();
-            var query = repository.Query()
+            var resultData = repository.Query()
                 .Join(accountRepository.Query(), c => c.AccountId, account => account.AccountId, (c, account) => new { c, account })
                 .Join(channelRepository.Query(), ca => ca.c.ChannelId, channel => channel.ChannelId, (ca, channel) => new Models.ContentsListDataModel()
                 {
@@ -53,26 +53,28 @@ namespace Mango.Module.CMS.Controllers
                     StateCode = ca.c.StateCode.Value,
                     Title = ca.c.Title
                 })
-                .Where(q => q.StateCode == 1 && q.ChannelId == channelId)
-                .OrderByDescending(q => q.ContentsId);
+                .Where(q => q.StateCode == 1 && (channelId > 0 ? q.ChannelId == channelId : q.ChannelId != 0))
+                .OrderByDescending(q => q.ContentsId)
+               .Skip(10 * (p - 1))
+               .Take(10)
+               .ToList();
 
-            var resultData = query.Skip(10 * (p - 1)).Take(10).ToList();
             return APIReturnMethod.ReturnSuccess(resultData);
         }
         /// <summary>
-        /// 按照分页获取内容列表
+        /// 根据ID获取内容
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="contentsId">内容ID</param>
         /// <returns></returns>
-        [HttpGet("{p}")]
-        public IActionResult Get(int p)
+        [HttpGet("{contentsId}")]
+        public IActionResult Get(int contentsId)
         {
             var repository = _unitOfWork.GetRepository<Entity.m_CmsContents>();
             var channelRepository = _unitOfWork.GetRepository<Entity.m_CmsChannel>();
             var accountRepository = _unitOfWork.GetRepository<m_Account>();
-            var query = repository.Query()
+            var resultData = repository.Query()
                 .Join(accountRepository.Query(), c => c.AccountId, account => account.AccountId, (c, account) => new { c, account })
-                .Join(channelRepository.Query(), ca => ca.c.ChannelId, channel => channel.ChannelId, (ca, channel) => new Models.ContentsListDataModel()
+                .Join(channelRepository.Query(), ca => ca.c.ChannelId, channel => channel.ChannelId, (ca, channel) => new Models.ContentsDataModel()
                 {
                     AccountId = ca.c.AccountId.Value,
                     AnswerCount = ca.c.AnswerCount.Value,
@@ -86,11 +88,12 @@ namespace Mango.Module.CMS.Controllers
                     PostTime = ca.c.PostTime.Value,
                     ReadCount = ca.c.ReadCount.Value,
                     StateCode = ca.c.StateCode.Value,
-                    Title = ca.c.Title
+                    Title = ca.c.Title,
+                    Contents = ca.c.Contents
                 })
-                .Where(q => q.StateCode == 1)
-                .OrderByDescending(q => q.ContentsId);
-            var resultData = query.Skip(10 * (p - 1)).Take(10).ToList();
+                .Where(q => q.StateCode == 1 && q.ContentsId == contentsId)
+                .OrderByDescending(q => q.ContentsId)
+                .FirstOrDefault();
             return APIReturnMethod.ReturnSuccess(resultData);
         }
         /// <summary>

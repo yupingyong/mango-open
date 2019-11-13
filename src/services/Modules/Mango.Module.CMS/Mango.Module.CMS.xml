@@ -20,9 +20,9 @@
         </member>
         <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.Int32)">
             <summary>
-            按照分页获取内容列表
+            根据ID获取内容
             </summary>
-            <param name="p"></param>
+            <param name="contentsId">内容ID</param>
             <returns></returns>
         </member>
         <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.String,System.Int32)">
@@ -200,6 +200,76 @@
         <member name="P:Mango.Module.CMS.Models.ContentReleaseRequestModel.AccountId">
             <summary>
             发布账户ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.ContentsId">
+            <summary>
+            内容Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.Title">
+            <summary>
+            帖子标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.PostTime">
+            <summary>
+            发布时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.AccountId">
+            <summary>
+            账号Id
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.ReadCount">
+            <summary>
+            阅读次数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.StateCode">
+            <summary>
+            是否显示(1.显示 0.不显示)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.ChannelId">
+            <summary>
+            所属频道
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.ChannelName">
+            <summary>
+            所属频道名称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.AnswerCount">
+            <summary>
+            回复数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsDataModel.HeadUrl">
+            <summary>
+            用户头像
             </summary>
         </member>
         <member name="P:Mango.Module.CMS.Models.ContentsListDataModel.ContentsId">

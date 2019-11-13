@@ -39,14 +39,9 @@ namespace Mango.Web.Areas.Cms.Controllers
 
             //获取帖子数据
             int pageIndex = Transform.GetInt(Request.Query["p"], 1);
-            if (id == 0)
-            {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsList}/{pageIndex}");
-            }
-            else 
-            {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsList}/{id}/{pageIndex}");
-            }
+
+            apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsList}/{id}/{pageIndex}");
+
             if (apiResult.Code == 0)
             {
                 viewModel.ContentsListData = JsonConvert.DeserializeObject<List<Models.ContentsListDataModel>>(apiResult.Data.ToString());
