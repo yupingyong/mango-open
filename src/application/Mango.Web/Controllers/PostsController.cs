@@ -40,7 +40,7 @@ namespace Mango.Web.Controllers
             var requestData = new Dictionary<string, object>();
             requestData.Add("channelId", id);
             requestData.Add("pageIndex", pageIndex);
-            apiResult = HttpCore.HttpGet($"{ApiServerConfig.Posts_GetPostsList}?{HttpParameter.ToUrlParameter(requestData)}");
+            apiResult = HttpCore.HttpGet($"{ApiServerConfig.Posts_GetPostsAnswerList}?{HttpParameter.ToUrlParameter(requestData)}");
             if (apiResult.Code == 0)
             {
                 viewModel.ListData = JsonConvert.DeserializeObject<List<Models.PostsModel>>(apiResult.Data.ToString());
@@ -77,7 +77,7 @@ namespace Mango.Web.Controllers
                 viewModel.TotalCount = apiResult.DataCount;
             }
             //获取热门帖子数据
-            apiResult = HttpCore.HttpGet(ApiServerConfig.Posts_GetPostsList);
+            apiResult = HttpCore.HttpGet(ApiServerConfig.Posts_GetPostsAnswerList);
             if (apiResult.Code == 0)
             {
                 viewModel.HotListData = JsonConvert.DeserializeObject<List<Models.PostsModel>>(apiResult.Data.ToString());

@@ -32,7 +32,7 @@
             </div>
             <div class="navbar-right" id="navbarCollapse" style="float:right;display:block;">
 
-                @if (Html.ViewContext.HttpContext.Session.GetInt32("UserId") == null)
+                @if (Html.ViewContext.HttpContext.Session.GetInt32("AccountId") == null)
                 {
                     <ul class="navbar-nav mr-auto">
                         @if (model.WebSiteConfigData.IsLogin)
@@ -96,7 +96,7 @@
     <script src="~/lib/artdialog/dialog.js"></script>
 
     <script src="~/js/main.min.js"></script>
-    @if (Html.ViewContext.HttpContext.Session.GetString("UserId") != null)
+    @if (Html.ViewContext.HttpContext.Session.GetString("AccountId") != null)
     {
         <script type="text/javascript">
             var signalrServerUrl = '@(Mango.Core.Configuration.GetItem("ApiServerUrl"))';

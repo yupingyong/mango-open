@@ -25,6 +25,14 @@
             <param name="p"></param>
             <returns></returns>
         </member>
+        <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.String,System.Int32)">
+            <summary>
+            根据自定义类型获取
+            </summary>
+            <param name="type">new 表示获取最新的,hot 表示获去热门</param>
+            <param name="count">需要获取的记录条数</param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.CMS.Controllers.ContentController.Put(Mango.Module.CMS.Models.ContentEditRequestModel)">
             <summary>
             内容编辑

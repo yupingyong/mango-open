@@ -4,7 +4,7 @@
 }
 @model List<Mango.Web.Areas.Cms.Models.ChannelDataModel>
 <div class="row" style="margin-top:20px;">
-    <form class="form-horizontal" method="post" id="formAddPosts">
+    <form class="form-horizontal" method="post" id="formRelease">
         <div class="row">
             <div class="col-lg-3">
                 <div class="input-group mb-3">
@@ -97,13 +97,14 @@
             });
             if (v.Create()) {
                 var tipIndex = layer.load(2);
-                $("#formAddPosts").ajaxSubmit({
-                    url: '/user/MyPosts/Add',
+                $("#formRelease").ajaxSubmit({
+                    url: '/cms/release',
                     success: function (result) {
-                        if (result) {
+                        console.log(result);
+                        if (result.code==0) {
                             layer.msg("发布成功", function () {
                                 layer.close(tipIndex);
-                                window.location.href = '/posts';
+                                window.location.href = '/channel';
                             });
                         }
                         else {

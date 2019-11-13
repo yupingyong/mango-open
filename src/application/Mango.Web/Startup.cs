@@ -68,23 +68,23 @@ namespace Mango.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapAreaControllerRoute(
-                   name: "area",
+                   name: "Account",
                    areaName: "Account",
-                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
                 endpoints.MapAreaControllerRoute(
-                   name: "area",
+                   name: "Docs",
                    areaName: "Docs",
-                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
-                   name: "area",
+                   name: "Cms",
                    areaName: "Cms",
-                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
-                   name: "area",
+                   name: "User",
                    areaName: "User",
-                   pattern: "{area:exists}/{controller=Portal}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
                 //
                 endpoints.MapControllerRoute(
                     name: "default",

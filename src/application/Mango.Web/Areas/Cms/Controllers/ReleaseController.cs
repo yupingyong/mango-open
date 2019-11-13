@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Mango.Core;
 using Mango.Web.Common;
+using Microsoft.AspNetCore.Http;
 namespace Mango.Web.Areas.Cms.Controllers
 {
     [Area("Cms")]
@@ -20,6 +21,15 @@ namespace Mango.Web.Areas.Cms.Controllers
                 var channelData = JsonConvert.DeserializeObject<List<Models.ChannelDataModel>>(apiResult.Data.ToString());
                 return View(channelData);
             }
+            return Json(apiResult);
+        }
+        [HttpPost]
+        public IActionResult Index(Models.ReleaseRequestModel requestModel)
+        {
+            requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+
+            string requestData = JsonConvert.SerializeObject(requestModel);
+            var apiResult = HttpCore.HttpPost(ApiServerConfig.CMS_ReleaseContent, requestData);
             return Json(apiResult);
         }
     }

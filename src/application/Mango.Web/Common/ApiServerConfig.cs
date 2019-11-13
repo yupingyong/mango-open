@@ -64,7 +64,7 @@ namespace Mango.Web.Common
         /// <summary>
         /// 获取帖子列表数据
         /// </summary>
-        public static string Posts_GetPostsList { get; set; } = "/api/Posts/GetPostsList";
+        public static string CMS_ReleaseContent { get; set; } = "/api/CMS/Content";
         /// <summary>
         /// 获取频道数据
         /// </summary>
