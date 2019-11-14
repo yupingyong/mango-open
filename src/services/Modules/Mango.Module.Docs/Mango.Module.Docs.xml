@@ -4,6 +4,28 @@
         <name>Mango.Module.Docs</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.Get(System.Int32,System.Int32)">
+            <summary>
+            根据文档主题ID获取主题详情数据
+            </summary>
+            <param name="themeId">文档主题ID</param>
+            <param name="docsId">文档ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.Get(System.Int32)">
+            <summary>
+            根据文档主题ID获取主题详情数据
+            </summary>
+            <param name="themeId">文档主题ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Get(System.Int32)">
+            <summary>
+            获取文档主题列表
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
         <member name="P:Mango.Module.Docs.Entity.m_Docs.DocsId">
             <summary>
             文档项ID
@@ -127,6 +149,176 @@
         <member name="P:Mango.Module.Docs.Entity.m_DocsTheme.IsShow">
             <summary>
             是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.DocsId">
+            <summary>
+            文档项ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.ShortTitle">
+            <summary>
+            短标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.ThemeId">
+            <summary>
+            所属文档主题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.AccountId">
+            <summary>
+            发布人
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.ReadCount">
+            <summary>
+            浏览数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.Tags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.VersionText">
+            <summary>
+            支持的版本信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.IsAudit">
+            <summary>
+            是否已经审核
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsModel.HeadUrl">
+            <summary>
+            用户头像
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.DocsId">
+            <summary>
+            文档项ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.ShortTitle">
+            <summary>
+            短标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.ThemeId">
+            <summary>
+            所属文档主题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.ThemeId">
+            <summary>
+            文档主题ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.Contents">
+            <summary>
+            内容描述
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.AccountId">
+            <summary>
+            发布用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.LastTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.ReadCount">
+            <summary>
+            浏览数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.PlusCount">
+            <summary>
+            +1数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.Tags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.VersionText">
+            <summary>
+            版本号信息
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.IsShow">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeDataModel.HeadUrl">
+            <summary>
+            用户头像
             </summary>
         </member>
     </members>
