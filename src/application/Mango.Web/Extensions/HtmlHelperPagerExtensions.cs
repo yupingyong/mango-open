@@ -20,42 +20,30 @@ namespace Microsoft.AspNetCore.Mvc.ViewFeatures
             try
             {
                 int pageIndex = 1;
-                string url = request.Path;
-                //拼接除页码参数以外的所有参数
-                StringBuilder paramBuilder = new StringBuilder();
-                foreach (string key in request.Query.Keys)
+                string url = string.Empty;
+                string areaName= request.RouteValues["area"].ToString();
+                string controllerName = request.RouteValues["controller"].ToString();
+                switch (controllerName)
                 {
-                    if (key == "p")
-                    {
-                        continue;
-                    }
-                    if (paramBuilder.Length>0)
-                    {
-                        paramBuilder.Append("&");
-                    }
-                    paramBuilder.AppendFormat($"{key}={request.Query[key]}");
-                }
-                if (paramBuilder.Length > 0)
-                {
-                    url = $"{url}?{paramBuilder}";
+                    case "docs":
+                        url = $"/{areaName}/{controllerName}";
+                        break;
                 }
                 //获取当前页码
-                if (request.Query["p"].Count>0)
+                if (request.RouteValues["p"] != null)
                 {
-                    pageIndex = int.Parse(request.Query["p"]);
+                    pageIndex = Convert.ToInt32(request.RouteValues["p"].ToString());
                 }
-                //当带页码参数时的URL地址拼接
-                string pageUrl = $"{url}{(paramBuilder.Length > 0 ? "&" : "?")}";
                 //处理分页样式
-                resultBuilder.AppendFormat("<li class=\"page-item\"><a class=\"page-link\" href=\"{0}\">回到首页</a></li>", url);
+                resultBuilder.Append($"<li class=\"page-item\"><a class=\"page-link\" href=\"{url}\">回到首页</a></li>");
 
-                resultBuilder.AppendFormat("<li class=\"page-item\"><a class=\"page-link\" href=\"{0}p={1}\">上一页</a></li>", pageUrl, pageIndex == 1 ? 1 : pageIndex - 1);
+                resultBuilder.Append($"<li class=\"page-item\"><a class=\"page-link\" href=\"{url}{(pageIndex == 1 ? "" :$"/{pageIndex - 1}" )}\">上一页</a></li>");
 
-                resultBuilder.Append(string.Format("<li class=\"page-item active\"><span class=\"page-link\">{0}</span></li>", pageIndex));
+                resultBuilder.Append($"<li class=\"page-item active\"><span class=\"page-link\">{pageIndex}</span></li>");
                 //
                 if (rowCount > 0)
                 {
-                    resultBuilder.AppendFormat("<li class=\"page-item\"><a class=\"page-link\" href=\"{0}p={1}\">下一页</a></li>", pageUrl, pageIndex + 1);
+                    resultBuilder.Append($"<li class=\"page-item\"><a class=\"page-link\" href=\"{url}{(pageIndex == 1 ? "" : $"/{pageIndex + 1}")}\">下一页</a></li>");
                 }
                 else
                 {

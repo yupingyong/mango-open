@@ -44,9 +44,9 @@ namespace Mango.Web.Common
         /// </summary>
         public static string Docs_GetDocsList { get; set; } = "/api/Docs/GetDocsList";
         /// <summary>
-        /// 获取文档主题列表
+        /// 获取文档主题列表(/api/Docs/Theme/{p})
         /// </summary>
-        public static string Docs_GetDocsThemeList { get; set; } = "/api/Docs/GetDocsThemeList";
+        public static string Docs_GetDocsThemeList { get; set; } = "/api/Docs/Theme";
         #endregion
         #region CMS模块接口
         /// <summary>

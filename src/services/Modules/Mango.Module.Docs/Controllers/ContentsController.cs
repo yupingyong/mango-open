@@ -14,7 +14,7 @@ using Mango.Framework.Data;
 namespace Mango.Module.Docs.Controllers
 {
     [Area("Docs")]
-    [Route("api/[controller]")]
+    [Route("api/[area]/[controller]")]
     [ApiController]
     public class ContentsController : ControllerBase
     {
