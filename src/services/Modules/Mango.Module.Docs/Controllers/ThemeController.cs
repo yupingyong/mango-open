@@ -23,13 +23,31 @@ namespace Mango.Module.Docs.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+        [HttpGet("document/{id}")]
+        public IActionResult Get([FromRoute]int id,bool isGood)
+        {
+            var docRepository = _unitOfWork.GetRepository<Entity.m_Docs>();
+            var docListData = docRepository.Query()
+                    .Where(q => q.ThemeId == id && q.IsShow == true)
+                    .OrderByDescending(q => q.DocsId)
+                    .Select(q => new Models.DocumentDataModel()
+                    {
+                        DocsId = q.DocsId.Value,
+                        ShortTitle = q.ShortTitle,
+                        Title = q.Title,
+                        ThemeId = q.ThemeId.Value,
+                        IsShow = q.IsShow.Value
+                    })
+                    .ToList();
+            return APIReturnMethod.ReturnSuccess(docListData);
+        }
         /// <summary>
         /// 获取文档主题列表
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
         [HttpGet("{p}")]
-        public IActionResult Get(int p)
+        public IActionResult Get([FromRoute]int p)
         {
             var repository = _unitOfWork.GetRepository<Entity.m_DocsTheme>();
             var accountRepository = _unitOfWork.GetRepository<m_Account>();

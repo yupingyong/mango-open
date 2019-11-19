@@ -32,17 +32,15 @@ namespace Mango.Web.Common
         #endregion
         #region 文档模块接口
         /// <summary>
-        /// 根据文档ID获取文档数据
-        /// </summary>
-        public static string Docs_GetDocsById { get; set; } = "/api/Docs/GetDocsById";
-        /// <summary>
         /// 根据文档主题ID获取文档主题数据
+        /// (/api/Docs/Contents/{themeId})
+        /// (/api/Docs/Contents/{themeId}/{docsId})
         /// </summary>
-        public static string Docs_GetDocsThemeById { get; set; } = "/api/Docs/GetDocsThemeById";
+        public static string Docs_GetDocsContents{ get; set; } = "/api/Docs/Contents";
         /// <summary>
-        /// 根据文档主题ID获取文档列表
+        /// 根据文档主题ID获取文档列表(/api/Docs/Theme/document/{id})
         /// </summary>
-        public static string Docs_GetDocsList { get; set; } = "/api/Docs/GetDocsList";
+        public static string Docs_GetDocsList { get; set; } = "/api/Docs/Theme/document";
         /// <summary>
         /// 获取文档主题列表(/api/Docs/Theme/{p})
         /// </summary>

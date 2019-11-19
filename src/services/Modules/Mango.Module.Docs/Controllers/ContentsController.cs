@@ -30,23 +30,10 @@ namespace Mango.Module.Docs.Controllers
         /// <param name="docsId">文档ID</param>
         /// <returns></returns>
         [HttpGet("{themeId}/{docsId}")]
-        public IActionResult Get(int themeId,int docsId)
+        public IActionResult Get([FromRoute]int themeId,[FromRoute]int docsId)
         {
             var accountRepository = _unitOfWork.GetRepository<m_Account>();
             var docRepository = _unitOfWork.GetRepository<Entity.m_Docs>();
-            var themeRepository = _unitOfWork.GetRepository<Entity.m_DocsTheme>();
-            var docListData = docRepository.Query()
-                    .Where(q => q.ThemeId == themeId && q.IsShow == true)
-                    .OrderByDescending(q => q.DocsId)
-                    .Select(q => new Models.DocumentDataModel()
-                    {
-                        DocsId = q.DocsId.Value,
-                        ShortTitle = q.ShortTitle,
-                        Title = q.Title,
-                        ThemeId = q.ThemeId.Value,
-                        IsShow = q.IsShow.Value
-                    })
-                    .ToList();
             var docsContentsData = docRepository.Query()
                            .Join(accountRepository.Query(), doc => doc.AccountId, acc => acc.AccountId, (doc, acc) => new Models.DocsContentsModel()
                            {
@@ -66,14 +53,14 @@ namespace Mango.Module.Docs.Controllers
                                Contents = doc.Contents,
                                IsAudit = doc.IsAudit.Value
                            })
-                           .Where(q => q.DocsId == docsId)
+                           .Where(q => q.DocsId == docsId&&q.ThemeId==themeId)
                            .FirstOrDefault();
             if (docsContentsData != null)
             {
                 //更新浏览次数
                 _unitOfWork.DbContext.MangoUpdate<Entity.m_Docs>(q => q.ReadCount == q.ReadCount + 1, q => q.DocsId == docsId);
             }
-            return APIReturnMethod.ReturnSuccess(new { DocsContentsData = docsContentsData, DocListData = docListData });
+            return APIReturnMethod.ReturnSuccess(docsContentsData);
         }
         /// <summary>
         /// 根据文档主题ID获取主题详情数据
@@ -81,23 +68,10 @@ namespace Mango.Module.Docs.Controllers
         /// <param name="themeId">文档主题ID</param>
         /// <returns></returns>
         [HttpGet("{themeId}")]
-        public IActionResult Get(int themeId)
+        public IActionResult Get([FromRoute]int themeId)
         {
             var accountRepository = _unitOfWork.GetRepository<m_Account>();
-            var docRepository = _unitOfWork.GetRepository<Entity.m_Docs>();
             var themeRepository = _unitOfWork.GetRepository<Entity.m_DocsTheme>();
-            var docListData = docRepository.Query()
-                    .Where(q => q.ThemeId == themeId && q.IsShow == true)
-                    .OrderByDescending(q => q.DocsId)
-                    .Select(q => new Models.DocumentDataModel()
-                    {
-                        DocsId = q.DocsId.Value,
-                        ShortTitle = q.ShortTitle,
-                        Title = q.Title,
-                        ThemeId = q.ThemeId.Value,
-                        IsShow = q.IsShow.Value
-                    })
-                    .ToList();
             var themeData = themeRepository.Query()
                 .Join(accountRepository.Query(), doc => doc.AccountId, acc => acc.AccountId, (doc, acc) => new Models.ThemeDataModel()
                 {
@@ -122,7 +96,7 @@ namespace Mango.Module.Docs.Controllers
                 //更新浏览次数
                 _unitOfWork.DbContext.MangoUpdate<Entity.m_DocsTheme>(q => q.ReadCount == q.ReadCount + 1, q => q.ThemeId == themeId);
             }
-            return APIReturnMethod.ReturnSuccess(new { ThemeData= themeData ,DocListData= docListData });
+            return APIReturnMethod.ReturnSuccess(themeData);
         }
     }
 }
