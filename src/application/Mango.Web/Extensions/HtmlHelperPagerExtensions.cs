@@ -20,19 +20,12 @@ namespace Microsoft.AspNetCore.Mvc.ViewFeatures
             try
             {
                 int pageIndex = 1;
-                string url = string.Empty;
-                string areaName= request.RouteValues["area"].ToString();
-                string controllerName = request.RouteValues["controller"].ToString();
-                switch (controllerName)
-                {
-                    case "docs":
-                        url = $"/{areaName}/{controllerName}";
-                        break;
-                }
+                string url = request.Path;
                 //获取当前页码
                 if (request.RouteValues["p"] != null)
                 {
                     pageIndex = Convert.ToInt32(request.RouteValues["p"].ToString());
+                    url = url.Substring(0, url.LastIndexOf("/"));
                 }
                 //处理分页样式
                 resultBuilder.Append($"<li class=\"page-item\"><a class=\"page-link\" href=\"{url}\">回到首页</a></li>");

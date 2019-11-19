@@ -18,14 +18,12 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.Extensions.Localization;
 using Mango.Framework;
 using Mango.Framework.Data;
 using Mango.Framework.Services;
 using Mango.Framework.Services.Cache;
 using Mango.Framework.Services.Aliyun;
 using Mango.Framework.Services.Aliyun.Sms;
-using Mango.Framework.Services.Tencent;
 using Mango.Framework.Services.Tencent.Captcha;
 
 using Mango.Framework.Converter;

@@ -12,21 +12,22 @@ namespace Mango.Web.Areas.Cms.Controllers
     [Area("Cms")]
     public class ChannelController : Controller
     {
-        // GET: Channel
-        public IActionResult Index()
+        [Route("{area}/{controller}")]
+        [Route("{area}/{controller}/{p}")]
+        public IActionResult Index([FromRoute]int p = 1)
         {
-
-            var viewModel = LoadMainData(0);
+            var viewModel = LoadMainData(0, p);
 
             return View(viewModel);
         }
-        [Route("cms/channel/{id}")]
-        public IActionResult Index(int id = 0)
+        [Route("{area}/{controller}/{action}/{id}")]
+        [Route("{area}/{controller}/{action}/{id}/{p}")]
+        public IActionResult List([FromRoute]int id = 0,[FromRoute]int p=1)
         {
-            var viewModel = LoadMainData(id);
-            return View(viewModel);
+            var viewModel = LoadMainData(id, p);
+            return View("~/Areas/Cms/Views/Channel/Index.cshtml",viewModel);
         }
-        public Models.ChannelViewModel LoadMainData(int id)
+        public Models.ChannelViewModel LoadMainData(int id,int p)
         {
             Models.ChannelViewModel viewModel = new Models.ChannelViewModel();
             //获取频道数据
@@ -38,9 +39,8 @@ namespace Mango.Web.Areas.Cms.Controllers
             }
 
             //获取帖子数据
-            int pageIndex = Transform.GetInt(Request.Query["p"], 1);
 
-            apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsList}/{id}/{pageIndex}");
+            apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsList}/{id}/{p}");
 
             if (apiResult.Code == 0)
             {

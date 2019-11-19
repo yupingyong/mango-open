@@ -5,7 +5,7 @@
         <a class="nav-link" href="/cms/channel" data-id="0">全部频道</a>
         @foreach (var item in Model)
         {
-            <a class="nav-link active" data-id="@item.ChannelId" href="/cms/channel/@item.ChannelId">@item.ChannelName</a>
+            <a class="nav-link active" data-id="@item.ChannelId" href="/cms/channel/list/@item.ChannelId">@item.ChannelName</a>
         }
     </nav>
 
