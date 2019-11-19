@@ -25,6 +25,7 @@ using Mango.Framework.Services.Cache;
 using Mango.Framework.Services.Aliyun;
 using Mango.Framework.Services.Aliyun.Sms;
 using Mango.Framework.Services.Tencent.Captcha;
+using Mango.Framework.Services.EMail;
 
 using Mango.Framework.Converter;
 using Mango.Framework.Module;
@@ -61,7 +62,15 @@ namespace Mango.WebHost.Extensions
             }, configuration.GetSection("Aliyun:Sms").Get<SmsOptions>()));
             //添加腾讯相关组件
             services.AddSingleton(typeof(ITencentCaptcha), new TencentCaptcha(configuration.GetSection("Tencent:Captcha").Get<CaptchaOptions>()));
-
+            //添加邮件发送服务组件
+            services.AddSingleton(typeof(IEMailService),new EMailService(new EMailOptions() { 
+                FromName= configuration.GetSection("Email:FromName").Value,
+                FromEMail= configuration.GetSection("Email:FromEMail").Value,
+                SmtpServerUrl= configuration.GetSection("Email:SmtpServerUrl").Value,
+                SmtpServerPort=Convert.ToInt32(configuration.GetSection("Email:SmtpServerPort").Value),
+                SmtpAuthenticateEmail= configuration.GetSection("Email:SmtpAuthenticateEmail").Value,
+                SmtpAuthenticatePasswordText= configuration.GetSection("Email:SmtpAuthenticatePasswordText").Value
+            }));
             ServiceContext.RegisterServices(services.BuildServiceProvider());
             return services;
         }

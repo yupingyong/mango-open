@@ -21,7 +21,7 @@
             <summary>
             获取验证码
             </summary>
-            <param name="phone"></param>
+            <param name="email">电子邮箱地址</param>
             <param name="ticket"></param>
             <param name="randstr"></param>
             <returns></returns>
