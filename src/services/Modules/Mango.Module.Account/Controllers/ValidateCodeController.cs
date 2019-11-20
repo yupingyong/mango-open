@@ -27,7 +27,6 @@ namespace Mango.Module.Account.Controllers
         public ValidateCodeController(IUnitOfWork<MangoDbContext> unitOfWork
             , IMemoryCache memoryCache
             , ITencentCaptcha tencentCaptcha
-            , IAliyunSmsSend aliyunSmsSend
             , IEMailService emailService)
         {
             _unitOfWork = unitOfWork;
@@ -41,11 +40,11 @@ namespace Mango.Module.Account.Controllers
         /// <param name="email">电子邮箱地址</param>
         /// <param name="ticket"></param>
         /// <param name="randstr"></param>
+        /// <param name="userIP"></param>
         /// <returns></returns>
-        [HttpGet("{email}/{ticket}/{randstr}")]
-        public IActionResult Get([FromRoute]string email, [FromRoute]string ticket, [FromRoute]string randstr)
+        [HttpGet("{email}/{ticket}/{randstr}/{userIP}")]
+        public IActionResult Get([FromRoute]string email, [FromRoute]string ticket, [FromRoute]string randstr,[FromRoute]string userIP)
         {
-            string userIP = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             bool tencentCaptchaResult = _tencentCaptcha.QueryTencentCaptcha(ticket, randstr, userIP);
             if (!tencentCaptchaResult)
             {

@@ -32,10 +32,10 @@ namespace Mango.Module.Account.Controllers
         {
             string Result = string.Empty;
             var repository = _unitOfWork.GetRepository<m_Account>();
-            var codeCache = _memoryCache.Get<string>("ValidatePhoneCode");
+            var codeCache = _memoryCache.Get<string>(requestModel.AccountName);
             if (codeCache==null)
             {
-                return APIReturnMethod.ReturnFailed("该手机号与通过短信验证的手机号不一致");
+                return APIReturnMethod.ReturnFailed("该账号与通过验证的账号不一致");
             }
             if (requestModel.ValidateCode != codeCache)
             {
@@ -44,7 +44,7 @@ namespace Mango.Module.Account.Controllers
             
             if (repository.Query().Where(q=>q.AccountName== requestModel.AccountName).Count()>0)
             {
-                return APIReturnMethod.ReturnFailed("该手机号已经注册过!");
+                return APIReturnMethod.ReturnFailed("该账号已经注册过!");
             }
             //注册新用户
             m_Account entity = new m_Account();
