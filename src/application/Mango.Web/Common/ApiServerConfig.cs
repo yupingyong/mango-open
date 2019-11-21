@@ -15,6 +15,7 @@ namespace Mango.Web.Common
         /// 账号登录接口
         /// </summary>
         public static string Account_Login { get; set; } = "/api/Account/Login";
+        public static string Account_Regiser { get; set; } = "/api/Account/Register";
         /// <summary>
         /// 验证码获取接口
         /// (/api/Account/ValidateCode/{email}/{ticket}/{randstr}/{userIP})

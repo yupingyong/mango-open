@@ -43,7 +43,7 @@ namespace Mango.Module.Account.Controllers
         /// <param name="userIP"></param>
         /// <returns></returns>
         [HttpGet("{email}/{ticket}/{randstr}/{userIP}")]
-        public IActionResult Get([FromRoute]string email, [FromRoute]string ticket, [FromRoute]string randstr,[FromRoute]string userIP)
+        public async Task<IActionResult> Get([FromRoute]string email, [FromRoute]string ticket, [FromRoute]string randstr,[FromRoute]string userIP)
         {
             bool tencentCaptchaResult = _tencentCaptcha.QueryTencentCaptcha(ticket, randstr, userIP);
             if (!tencentCaptchaResult)
@@ -66,9 +66,9 @@ namespace Mango.Module.Account.Controllers
             _memoryCache.Set<string>(email, emailCode);
 
             string messageContent = string.Format("感谢您的注册,您的验证码为:{0},您可以继续完成您的注册!", emailCode);
-            string subject = "51Core.Net用户注册验证码邮件";
+            string subject = "51Core技术网用户注册验证码邮件";
             
-            bool sendResult = _emailService.SendEmail(email, subject, messageContent);
+            bool sendResult = await _emailService.SendEmail(email, subject, messageContent);
             //邮件发送内容保存
             m_Sms model = new m_Sms();
             model.Contents = string.Format("邮箱验证码为:{0} 服务器返回结果:{1}", emailCode, sendResult);

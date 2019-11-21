@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MailKit.Net.Smtp;
-using MailKit.Security;
-using MimeKit;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 namespace Mango.Framework.Services.EMail
 {
@@ -14,26 +13,25 @@ namespace Mango.Framework.Services.EMail
         {
             _options = options;
         }
-        public bool SendEmail(string email, string subject, string message)
+        public async Task<bool> SendEmail(string email, string subject, string message)
         {
             bool sendResult = false;
             try
             {
-                var emailMessage = new MimeMessage();
-                emailMessage.From.Add(new MailboxAddress(_options.FromName, _options.FromEMail));
-                emailMessage.To.Add(new MailboxAddress("mail", email));
-                emailMessage.Subject = subject;
-                emailMessage.Body = new TextPart("plain") { Text = message };
+                var mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(_options.FromEMail, _options.FromName);
+                mailMessage.To.Add(new MailAddress(email));
+                mailMessage.Subject = subject;
+                mailMessage.Body = message;
 
-                using (var client = new SmtpClient())
-                {
-                    client.Connect(_options.SmtpServerUrl, _options.SmtpServerPort, true);
-                    client.Authenticate(_options.SmtpAuthenticateEmail, _options.SmtpAuthenticatePasswordText);
-
-                    client.Send(emailMessage);
-                    client.Disconnect(true);
-                    sendResult = true;
-                }
+                using var client = new SmtpClient();
+                client.Host = _options.SmtpServerUrl;
+                client.Port = _options.SmtpServerPort;
+                client.EnableSsl = false;
+                
+                client.Credentials = new NetworkCredential(_options.SmtpAuthenticateEmail, _options.SmtpAuthenticatePasswordText);
+                await client.SendMailAsync(mailMessage);
+                sendResult = true;
             }
             catch
             {

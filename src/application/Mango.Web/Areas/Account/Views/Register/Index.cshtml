@@ -12,7 +12,7 @@
     <div class="col-lg-3">
         @if (configData.IsRegister)
         {
-            <form method="post" id="RegisterForm">
+            <form method="post" id="RegisterForm" action="/Account/Register">
                 <div class="form-group">
                     <label for="UserName">账号(电子邮箱)</label>
                     <input type="tel" class="form-control" id="AccountName" name="AccountName" placeholder="请输入你的电子邮箱">
@@ -113,6 +113,18 @@
             });
             if (v.Create()) {
                 $("#TencentCaptcha").trigger("click");
+            }
+            else {
+                return false;
+            }
+
+        });
+
+        window.callback = function (res) {
+            console.log(res)
+            // res（未通过验证）= {ret: 1, ticket: null}
+            // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+            if (res.ret === 0) {
                 var smsInterval = setInterval(function () {
                     if (smsTime == 60) {
                         $("#btn_SendEmail").attr("disabled", "disabled");
@@ -128,19 +140,6 @@
                         $("#btn_SendEmail").text("获取注册验证码(" + smsTime + ")");
                     }
                 }, 1000);
-            }
-            else {
-                return false;
-            }
-
-        });
-
-        window.callback = function (res) {
-            console.log(res)
-            // res（未通过验证）= {ret: 1, ticket: null}
-            // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
-            if (res.ret === 0) {
-
                 var email = $("#AccountName").val().trim();
                 $.ajax({
                     type: 'post',
@@ -184,19 +183,15 @@
                 $("#RegisterForm").ajaxSubmit({
                     success: function (result) {
                         layer.close(tipIndex);
-                        if (result == "ok") {
-                            if (result) {
-                                layer.msg('您已经注册成功,感谢您的使用,系统将为你跳转到登录页面!', function () {
-                                    $("#btn_Post").removeAttr("disabled");
-                                    window.location.href = '/account/login';
-                                });
-                            }
+                        if (result.code == 0) {
+                            layer.msg('您已经注册成功,感谢您的使用,系统将为你跳转到登录页面!', function () {
+                                $("#btn_Post").removeAttr("disabled");
+                                window.location.href = '/account/login';
+                            });
                         }
                         else {
                             $("#btn_Post").removeAttr("disabled");
-                            layer.msg(result, function () {
-
-                            });
+                            layer.msg(result.message);
                         }
                     }
                 });
