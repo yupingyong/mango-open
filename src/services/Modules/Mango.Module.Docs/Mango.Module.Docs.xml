@@ -4,6 +4,13 @@
         <name>Mango.Module.Docs</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.Post(Mango.Module.Docs.Models.DocsContentsCreateRequestModel)">
+            <summary>
+            创建新文档内容
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.Docs.Controllers.ContentsController.Get(System.Int32,System.Int32)">
             <summary>
             根据文档主题ID获取主题详情数据
@@ -17,6 +24,21 @@
             根据文档主题ID获取主题详情数据
             </summary>
             <param name="themeId">文档主题ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Post(Mango.Module.Docs.Models.ThemeCreateRequestModel)">
+            <summary>
+            创建新文档主题
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Get(System.Int32,System.Boolean)">
+            <summary>
+            获取主题文档列表
+            </summary>
+            <param name="id"></param>
+            <param name="isGood"></param>
             <returns></returns>
         </member>
         <member name="M:Mango.Module.Docs.Controllers.ThemeController.Get(System.Int32)">
@@ -151,6 +173,31 @@
             是否显示
             </summary>
         </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.ThemeId">
+            <summary>
+            所属文档主题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.Title">
+            <summary>
+            文档标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.ShortTitle">
+            <summary>
+            短标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.Contents">
+            <summary>
+            文档内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.AccountId">
+            <summary>
+            发布用户
+            </summary>
+        </member>
         <member name="P:Mango.Module.Docs.Models.DocsContentsModel.DocsId">
             <summary>
             文档项ID
@@ -254,6 +301,21 @@
         <member name="P:Mango.Module.Docs.Models.DocumentDataModel.IsShow">
             <summary>
             是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeCreateRequestModel.Title">
+            <summary>
+            文档标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeCreateRequestModel.Contents">
+            <summary>
+            文档内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeCreateRequestModel.AccountId">
+            <summary>
+            发布用户
             </summary>
         </member>
         <member name="P:Mango.Module.Docs.Models.ThemeDataModel.ThemeId">

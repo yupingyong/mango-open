@@ -186,7 +186,7 @@ namespace Mango.Module.CMS.Controllers
             }
             //
             Entity.m_CmsContents entity = new Entity.m_CmsContents();
-            entity.Contents = requestModel.Contents;//Framework.Core.HtmlFilter.SanitizeHtml(model.Contents);
+            entity.Contents = HtmlFilter.SanitizeHtml(requestModel.Contents);
             entity.ImgUrl = string.Empty;
             entity.StateCode = 1;
             entity.PostTime = DateTime.Now;

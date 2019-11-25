@@ -24,6 +24,41 @@ namespace Mango.Module.Docs.Controllers
             _unitOfWork = unitOfWork;
         }
         /// <summary>
+        /// 创建新文档内容
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Post([FromBody]Models.DocsContentsCreateRequestModel requestModel)
+        {
+            if (requestModel.Title.Trim().Length <= 0)
+            {
+                return APIReturnMethod.ReturnFailed("请输入文档标题");
+            }
+            if (requestModel.Contents.Trim().Length <= 0)
+            {
+                return APIReturnMethod.ReturnFailed("请输入文档内容");
+            }
+            Entity.m_Docs model = new Entity.m_Docs();
+            model.AppendTime = DateTime.Now;
+            model.Contents = HtmlFilter.SanitizeHtml(requestModel.Contents);
+            model.IsShow = true;
+            model.LastTime = DateTime.Now;
+            model.PlusCount = 0;
+            model.ReadCount = 0;
+            model.Tags = "";
+            model.Title = HtmlFilter.StripHtml(requestModel.Title);
+            model.AccountId = requestModel.AccountId;
+            model.VersionText = "";
+            model.ThemeId = requestModel.ThemeId;
+            model.ShortTitle = HtmlFilter.StripHtml(requestModel.ShortTitle);
+            model.IsAudit = true;
+            var repository = _unitOfWork.GetRepository<Entity.m_Docs>();
+            repository.Insert(model);
+            var resultCount = _unitOfWork.SaveChanges();
+            return resultCount > 0 ? APIReturnMethod.ReturnSuccess() : APIReturnMethod.ReturnFailed();
+        }
+        /// <summary>
         /// 根据文档主题ID获取主题详情数据
         /// </summary>
         /// <param name="themeId">文档主题ID</param>
