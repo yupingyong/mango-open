@@ -23,15 +23,19 @@ namespace Mango.Web.Areas.Docs.Controllers
             viewModel.DocsId = docsId;
             //
             //获取文档列表数据
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsList}/{themeId}");
-            if (apiResult.Code == 0)
+            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsListApi}/{themeId}");
+            if (apiResult.Code == 0 && apiResult.Data != null)
             {
                 viewModel.ItemsListData = JsonConvert.DeserializeObject<List<Models.DocumentDataModel>>(apiResult.Data.ToString());
+            }
+            else
+            {
+                viewModel.ItemsListData = new List<Models.DocumentDataModel>();
             }
             //获取帖子详情数据
             if (docsId == 0)
             {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsContents}/{themeId}");
+                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_DocsContentsApi}/{themeId}");
                 if (apiResult.Code == 0)
                 {
                     viewModel.DocsThemeData = JsonConvert.DeserializeObject<Models.ThemeDataModel>(apiResult.Data.ToString());
@@ -39,7 +43,7 @@ namespace Mango.Web.Areas.Docs.Controllers
             }
             else
             {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsContents}/{themeId}/{docsId}");
+                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_DocsContentsApi}/{themeId}/{docsId}");
                 if (apiResult.Code == 0)
                 {
                     viewModel.DocsData = JsonConvert.DeserializeObject<Models.DocsContentsModel>(apiResult.Data.ToString());

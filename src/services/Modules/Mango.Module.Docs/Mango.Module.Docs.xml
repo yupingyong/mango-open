@@ -4,6 +4,13 @@
         <name>Mango.Module.Docs</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.Put(Mango.Module.Docs.Models.DocsContentsEditRequestModel)">
+            <summary>
+            文档内容编辑
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.Docs.Controllers.ContentsController.Post(Mango.Module.Docs.Models.DocsContentsCreateRequestModel)">
             <summary>
             创建新文档内容
@@ -24,6 +31,13 @@
             根据文档主题ID获取主题详情数据
             </summary>
             <param name="themeId">文档主题ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Put(Mango.Module.Docs.Models.ThemeEditRequestModel)">
+            <summary>
+            文档主题编辑
+            </summary>
+            <param name="requestModel"></param>
             <returns></returns>
         </member>
         <member name="M:Mango.Module.Docs.Controllers.ThemeController.Post(Mango.Module.Docs.Models.ThemeCreateRequestModel)">
@@ -194,6 +208,31 @@
             </summary>
         </member>
         <member name="P:Mango.Module.Docs.Models.DocsContentsCreateRequestModel.AccountId">
+            <summary>
+            发布用户
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsEditRequestModel.DocsId">
+            <summary>
+            所属文档内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsEditRequestModel.Title">
+            <summary>
+            文档标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsEditRequestModel.ShortTitle">
+            <summary>
+            短标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsEditRequestModel.Contents">
+            <summary>
+            文档内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocsContentsEditRequestModel.AccountId">
             <summary>
             发布用户
             </summary>
@@ -381,6 +420,26 @@
         <member name="P:Mango.Module.Docs.Models.ThemeDataModel.HeadUrl">
             <summary>
             用户头像
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeEditRequestModel.ThemeId">
+            <summary>
+            文档主题ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeEditRequestModel.Title">
+            <summary>
+            文档标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeEditRequestModel.Contents">
+            <summary>
+            文档内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.ThemeEditRequestModel.AccountId">
+            <summary>
+            发布用户
             </summary>
         </member>
     </members>

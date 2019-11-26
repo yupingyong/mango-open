@@ -17,7 +17,7 @@ namespace Mango.Web.Areas.Docs.Controllers
         {
             Models.ThemeViewModel viewModel = new Models.ThemeViewModel();
             //获取数据
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsThemeList}/{p}");
+            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_ThemeApi}/{p}");
 
             if (apiResult.Code == 0)
             {

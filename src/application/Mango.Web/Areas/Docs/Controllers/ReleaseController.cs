@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Newtonsoft.Json;
+using Mango.Core;
+using Mango.Web.Common;
+using Microsoft.AspNetCore.Http;
 namespace Mango.Web.Areas.Docs.Controllers
 {
+    [Area("Docs")]
     public class ReleaseController : Controller
     {
         /// <summary>
@@ -17,13 +21,23 @@ namespace Mango.Web.Areas.Docs.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Theme(Models.ThemeCreateRequestModel requestModel)
+        {
+            requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+
+            string requestData = JsonConvert.SerializeObject(requestModel);
+            var apiResult = HttpCore.HttpPost(ApiServerConfig.Docs_ThemeApi, requestData);
+            return Json(apiResult);
+        }
         /// <summary>
         /// 发布文档
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public IActionResult Document()
+        [HttpGet("{themeId}")]
+        public IActionResult Document(int themeId)
         {
+            ViewData["ThemeId"] = themeId;
             return View();
         }
     }

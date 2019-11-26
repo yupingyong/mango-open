@@ -24,6 +24,42 @@ namespace Mango.Module.Docs.Controllers
             _unitOfWork = unitOfWork;
         }
         /// <summary>
+        /// 文档内容编辑
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Put([FromBody]Models.DocsContentsEditRequestModel requestModel)
+        {
+            if (requestModel.Title.Trim().Length <= 0)
+            {
+                return APIReturnMethod.ReturnFailed("请输入文档标题");
+            }
+            if (requestModel.Contents.Trim().Length <= 0)
+            {
+                return APIReturnMethod.ReturnFailed("请输入文档内容");
+            }
+            var repository = _unitOfWork.GetRepository<Entity.m_Docs>();
+
+            Entity.m_Docs model = repository.Query().Where(q => q.DocsId == requestModel.DocsId).FirstOrDefault();
+            if (model == null)
+            {
+                return APIReturnMethod.ReturnFailed("您要编辑的文档内容信息不存在!");
+            }
+            if (model.AccountId != requestModel.AccountId)
+            {
+                return APIReturnMethod.ReturnFailed("您无权对当前的数据进行编辑操作!");
+            }
+            model.Contents = HtmlFilter.SanitizeHtml(requestModel.Contents);
+            model.LastTime = DateTime.Now;
+            model.Title = HtmlFilter.StripHtml(requestModel.Title);
+            model.ShortTitle = HtmlFilter.StripHtml(requestModel.ShortTitle);
+            
+            repository.Update(model);
+            var resultCount = _unitOfWork.SaveChanges();
+            return resultCount > 0 ? APIReturnMethod.ReturnSuccess() : APIReturnMethod.ReturnFailed();
+        }
+        /// <summary>
         /// 创建新文档内容
         /// </summary>
         /// <param name="requestModel"></param>

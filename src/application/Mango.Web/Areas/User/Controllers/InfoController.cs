@@ -11,7 +11,5 @@ namespace Mango.Web.Areas.User.Controllers
     [Area("User")]
     public class InfoController : Controller
     {
-        
-        
     }
 }

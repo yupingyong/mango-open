@@ -76,17 +76,17 @@
             if (v.Create()) {
                 var tipIndex = layer.load(2);
                 $("#formData").ajaxSubmit({
-                    url: '/user/MyDocs/AddTheme',
+                    url: '/docs/Release/Theme',
                     success: function (result) {
-                        if (result == "ok") {
+                        if (result.code == 0) {
                             layer.msg("保存成功", function () {
                                 layer.close(tipIndex);
-                                window.location.href = '/docs';
+                                window.location.href = '/docs/theme';
                             });
                         }
                         else {
                             layer.close(tipIndex);
-                            layer.msg(result);
+                            layer.msg(result.message);
                         }
                     }
                 });
