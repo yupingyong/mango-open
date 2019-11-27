@@ -54,29 +54,20 @@ namespace Mango.Web.Common
         #endregion
         #region CMS模块接口
         /// <summary>
-        /// 获取帖子回复列表数据
-        /// </summary>
-        public static string Posts_GetPostsAnswerList { get; set; } = "/api/Posts/GetPostsAnswerList";
-        /// <summary>
-        /// 获取CMS文章列表(/api/CMS/Content/{channelId}/{p})
-        /// </summary>
-        public static string CMS_ContentsList { get; set; } = "/api/CMS/Content";
-        /// <summary>
-        /// 获取CMS文章接口(/api/CMS/Content/{contentsId})
-        /// </summary>
-        public static string CMS_Contents { get; set; } = "/api/CMS/Content";
-        /// <summary>
         /// 获取自定义类型的数据(/api/CMS/Content/customize/{type}/{count})
         /// </summary>
-        public static string CMS_GetContentsCustomizeList { get; set; } = "/api/CMS/Content/customize";
+        public static string CMS_ContentsCustomizeApi { get; set; } = "/api/CMS/Contents/customize";
         /// <summary>
-        /// 获取帖子列表数据
+        /// CMS内容相关API
+        /// (/api/CMS/Contents/{contentsId})
         /// </summary>
-        public static string CMS_ReleaseContent { get; set; } = "/api/CMS/Content";
+        public static string CMS_ContentsApi { get; set; } = "/api/CMS/Contents";
         /// <summary>
-        /// 获取频道数据
+        /// CMS频道相关API
+        /// (/api/CMS/Channel)
+        /// (/api/CMS/Channel/{channelId}/{p})
         /// </summary>
-        public static string CMS_GetChannel{ get; set; } = "/api/CMS/Channel";
+        public static string CMS_ChannelApi { get; set; } = "/api/CMS/Channel";
         #endregion
         #region 公共数据接口
         /// <summary>

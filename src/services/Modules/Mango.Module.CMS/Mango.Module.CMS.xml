@@ -4,13 +4,7 @@
         <name>Mango.Module.CMS</name>
     </assembly>
     <members>
-        <member name="M:Mango.Module.CMS.Controllers.ChannelController.Get">
-            <summary>
-            获取频道数据
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.Int32,System.Int32)">
+        <member name="M:Mango.Module.CMS.Controllers.ChannelController.Get(System.Int32,System.Int32)">
             <summary>
             根据频道获取内容列表
             </summary>
@@ -18,14 +12,20 @@
             <param name="p"></param>
             <returns></returns>
         </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.Int32)">
+        <member name="M:Mango.Module.CMS.Controllers.ChannelController.Get">
+            <summary>
+            获取频道数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Get(System.Int32)">
             <summary>
             根据ID获取内容
             </summary>
             <param name="contentsId">内容ID</param>
             <returns></returns>
         </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentController.Get(System.String,System.Int32)">
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Get(System.String,System.Int32)">
             <summary>
             根据自定义类型获取
             </summary>
@@ -33,14 +33,14 @@
             <param name="count">需要获取的记录条数</param>
             <returns></returns>
         </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentController.Put(Mango.Module.CMS.Models.ContentEditRequestModel)">
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Put(Mango.Module.CMS.Models.ContentEditRequestModel)">
             <summary>
             内容编辑
             </summary>
             <param name="requestModel"></param>
             <returns></returns>
         </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentController.Post(Mango.Module.CMS.Models.ContentReleaseRequestModel)">
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Post(Mango.Module.CMS.Models.ContentReleaseRequestModel)">
             <summary>
             内容发布
             </summary>

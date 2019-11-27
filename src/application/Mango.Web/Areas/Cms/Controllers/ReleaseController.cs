@@ -15,7 +15,7 @@ namespace Mango.Web.Areas.Cms.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var apiResult = HttpCore.HttpGet(ApiServerConfig.CMS_GetChannel);
+            var apiResult = HttpCore.HttpGet(ApiServerConfig.CMS_ChannelApi);
             if (apiResult.Code == 0)
             {
                 var channelData = JsonConvert.DeserializeObject<List<Models.ChannelDataModel>>(apiResult.Data.ToString());
@@ -29,7 +29,7 @@ namespace Mango.Web.Areas.Cms.Controllers
             requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
 
             string requestData = JsonConvert.SerializeObject(requestModel);
-            var apiResult = HttpCore.HttpPost(ApiServerConfig.CMS_ReleaseContent, requestData);
+            var apiResult = HttpCore.HttpPost(ApiServerConfig.CMS_ContentsApi, requestData);
             return Json(apiResult);
         }
     }
