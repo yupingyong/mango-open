@@ -169,5 +169,78 @@ namespace Mango.Module.Docs.Controllers
             }
             return APIReturnMethod.ReturnSuccess(themeData);
         }
+
+        /// <summary>
+        /// 根据文档主题ID获取主题详情数据
+        /// </summary>
+        /// <param name="accountId">用户账户ID</param>
+        /// <param name="themeId">文档主题ID</param>
+        /// <param name="docsId">文档ID</param>
+        /// <returns></returns>
+        [HttpGet("user/{accountId}/{themeId}/{docsId}")]
+        public IActionResult Get([FromRoute]int accountId,[FromRoute]int themeId, [FromRoute]int docsId)
+        {
+            var accountRepository = _unitOfWork.GetRepository<m_Account>();
+            var docRepository = _unitOfWork.GetRepository<Entity.m_Docs>();
+            var docsContentsData = docRepository.Query()
+                           .Join(accountRepository.Query(), doc => doc.AccountId, acc => acc.AccountId, (doc, acc) => new Models.DocsContentsModel()
+                           {
+                               DocsId = doc.DocsId.Value,
+                               HeadUrl = acc.HeadUrl,
+                               IsShow = doc.IsShow.Value,
+                               LastTime = doc.LastTime.Value,
+                               PlusCount = doc.PlusCount.Value,
+                               NickName = acc.NickName,
+                               AppendTime = doc.AppendTime.Value,
+                               ReadCount = doc.ReadCount.Value,
+                               Title = doc.Title,
+                               Tags = doc.Tags,
+                               AccountId = doc.AccountId.Value,
+                               ShortTitle = doc.ShortTitle,
+                               ThemeId = doc.ThemeId.Value,
+                               Contents = doc.Contents,
+                               IsAudit = doc.IsAudit.Value
+                           })
+                           .Where(q => q.DocsId == docsId && q.ThemeId == themeId&&q.AccountId==accountId)
+                           .FirstOrDefault();
+            if (docsContentsData != null)
+            {
+                //更新浏览次数
+                _unitOfWork.DbContext.MangoUpdate<Entity.m_Docs>(q => q.ReadCount == q.ReadCount + 1, q => q.DocsId == docsId);
+            }
+            return APIReturnMethod.ReturnSuccess(docsContentsData);
+        }
+        /// <summary>
+        /// 根据文档主题ID获取主题详情数据
+        /// </summary>
+        /// <param name="accountId">用户账户ID</param>
+        /// <param name="themeId">文档主题ID</param>
+        /// <returns></returns>
+        [HttpGet("user/{accountId}/{themeId}")]
+        public IActionResult GetUserTheme([FromRoute]int accountId,[FromRoute]int themeId)
+        {
+            var accountRepository = _unitOfWork.GetRepository<m_Account>();
+            var themeRepository = _unitOfWork.GetRepository<Entity.m_DocsTheme>();
+            var themeData = themeRepository.Query()
+                .Join(accountRepository.Query(), doc => doc.AccountId, acc => acc.AccountId, (doc, acc) => new Models.ThemeDataModel()
+                {
+                    ThemeId = doc.ThemeId.Value,
+                    HeadUrl = acc.HeadUrl,
+                    IsShow = doc.IsShow.Value,
+                    LastTime = doc.LastTime.Value,
+                    PlusCount = doc.PlusCount.Value,
+                    NickName = acc.NickName,
+                    AppendTime = doc.AppendTime.Value,
+                    ReadCount = doc.ReadCount.Value,
+                    Title = doc.Title,
+                    Tags = doc.Tags,
+                    AccountId = doc.AccountId.Value,
+                    Contents = doc.Contents
+                })
+               .Where(q => q.ThemeId == themeId&&q.AccountId== accountId)
+               .OrderByDescending(q => q.ThemeId)
+               .FirstOrDefault();
+            return APIReturnMethod.ReturnSuccess(themeData);
+        }
     }
 }

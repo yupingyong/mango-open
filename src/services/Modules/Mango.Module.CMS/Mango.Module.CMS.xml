@@ -18,6 +18,22 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Get(System.Int32,System.Int32)">
+            <summary>
+            根据ID获取内容
+            </summary>
+            <param name="accountId">用户账号ID</param>
+            <param name="contentsId">内容ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.GetList(System.Int32,System.Int32)">
+            <summary>
+            根据用户账号ID获取文章列表
+            </summary>
+            <param name="accountId">用户账号ID</param>
+            <param name="p">页码</param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.CMS.Controllers.ContentsController.Get(System.Int32)">
             <summary>
             根据ID获取内容

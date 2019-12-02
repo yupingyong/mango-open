@@ -33,6 +33,40 @@
             <param name="themeId">文档主题ID</param>
             <returns></returns>
         </member>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据文档主题ID获取主题详情数据
+            </summary>
+            <param name="accountId">用户账户ID</param>
+            <param name="themeId">文档主题ID</param>
+            <param name="docsId">文档ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ContentsController.GetUserTheme(System.Int32,System.Int32)">
+            <summary>
+            根据文档主题ID获取主题详情数据
+            </summary>
+            <param name="accountId">用户账户ID</param>
+            <param name="themeId">文档主题ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取主题文档列表
+            </summary>
+            <param name="accountId">用户账户ID</param>
+            <param name="themeId">文档主题ID</param>
+            <param name="p">页码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Docs.Controllers.ThemeController.Get(System.Int32,System.Int32)">
+            <summary>
+            获取用户发布的文档主题列表
+            </summary>
+            <param name="accountId">用户账户ID</param>
+            <param name="p">页码</param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.Docs.Controllers.ThemeController.Put(Mango.Module.Docs.Models.ThemeEditRequestModel)">
             <summary>
             文档主题编辑
@@ -340,6 +374,26 @@
         <member name="P:Mango.Module.Docs.Models.DocumentDataModel.IsShow">
             <summary>
             是否显示
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.AppendTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.AccountId">
+            <summary>
+            发布人
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.ReadCount">
+            <summary>
+            浏览数
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Docs.Models.DocumentDataModel.PlusCount">
+            <summary>
+            +1数
             </summary>
         </member>
         <member name="P:Mango.Module.Docs.Models.ThemeCreateRequestModel.Title">

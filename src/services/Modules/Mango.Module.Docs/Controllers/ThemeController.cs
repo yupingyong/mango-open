@@ -24,6 +24,67 @@ namespace Mango.Module.Docs.Controllers
             _unitOfWork = unitOfWork;
         }
         /// <summary>
+        /// 获取主题文档列表
+        /// </summary>
+        /// <param name="accountId">用户账户ID</param>
+        /// <param name="themeId">文档主题ID</param>
+        /// <param name="p">页码</param>
+        /// <returns></returns>
+        [HttpGet("user/{accountId}/{themeId}/{p}")]
+        public IActionResult Get([FromRoute]int accountId, [FromRoute]int themeId, [FromRoute] int p)
+        {
+            var docRepository = _unitOfWork.GetRepository<Entity.m_Docs>();
+            var docListData = docRepository.Query()
+                    .Where(q => q.ThemeId == themeId && q.IsShow == true && q.AccountId == accountId)
+                    .OrderByDescending(q => q.DocsId)
+                    .Select(q => new Models.DocumentDataModel()
+                    {
+                        DocsId = q.DocsId.Value,
+                        ShortTitle = q.ShortTitle,
+                        Title = q.Title,
+                        ThemeId = q.ThemeId.Value,
+                        IsShow = q.IsShow.Value
+                    })
+                     .OrderByDescending(q => q.DocsId)
+                     .Skip(10 * (p - 1))
+                     .Take(10)
+                     .ToList();
+            return APIReturnMethod.ReturnSuccess(docListData);
+        }
+        /// <summary>
+        /// 获取用户发布的文档主题列表
+        /// </summary>
+        /// <param name="accountId">用户账户ID</param>
+        /// <param name="p">页码</param>
+        /// <returns></returns>
+        [HttpGet("user/{accountId}/{p}")]
+        public IActionResult Get([FromRoute]int accountId, [FromRoute]int p)
+        {
+            var repository = _unitOfWork.GetRepository<Entity.m_DocsTheme>();
+            var accountRepository = _unitOfWork.GetRepository<m_Account>();
+            var resultData = repository.Query()
+                .Join(accountRepository.Query(), t => t.AccountId, acc => acc.AccountId, (t, acc) => new Models.ThemeDataModel()
+                {
+                    ThemeId = t.ThemeId.Value,
+                    HeadUrl = acc.HeadUrl,
+                    IsShow = t.IsShow.Value,
+                    LastTime = t.LastTime.Value,
+                    PlusCount = t.PlusCount.Value,
+                    NickName = acc.NickName,
+                    AppendTime = t.AppendTime.Value,
+                    ReadCount = t.ReadCount.Value,
+                    Title = t.Title,
+                    Tags = t.Tags,
+                    AccountId = t.AccountId.Value
+                })
+                .Where(q => q.AccountId == accountId)
+                .OrderByDescending(q => q.ThemeId)
+                .Skip(10 * (p - 1))
+                .Take(10)
+                .ToList();
+            return APIReturnMethod.ReturnSuccess(resultData);
+        }
+        /// <summary>
         /// 文档主题编辑
         /// </summary>
         /// <param name="requestModel"></param>

@@ -12,10 +12,10 @@ namespace Mango.Module.CMS.Controllers
     [Area("CMS")]
     [Route("api/[area]/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class ManagerController : ControllerBase
     {
         private IUnitOfWork<MangoDbContext> _unitOfWork;
-        public AccountController(IUnitOfWork<MangoDbContext> unitOfWork)
+        public ManagerController(IUnitOfWork<MangoDbContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
