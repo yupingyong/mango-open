@@ -34,3 +34,12 @@
 /src/application/Mango.Core/bin/Debug/netcoreapp3.0
 /src/application/Mango.Core/obj
 /src/application/Mango.Web/bin/Release/netcoreapp3.0
+/src/application/Mango.Core/bin/Debug/netcoreapp3.1
+/src/application/Mango.Web/bin/Debug/netcoreapp3.1
+/src/services/Mango.Framework/bin/Debug/netcoreapp3.1
+/src/services/Mango.WebHost/bin/Debug/netcoreapp3.1
+/src/services/Modules/Mango.Module.Account/bin/Debug/netcoreapp3.1
+/src/services/Modules/Mango.Module.CMS/bin/Debug/netcoreapp3.1
+/src/services/Modules/Mango.Module.Core/bin/Debug/netcoreapp3.1
+/src/services/Modules/Mango.Module.Docs/bin/Debug/netcoreapp3.1
+/src/services/Modules/Mango.Module.WebSite/bin/Debug/netcoreapp3.1
