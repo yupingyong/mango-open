@@ -12,9 +12,11 @@ namespace Mango.Web.Areas.Account.Controllers
     [Area("Account")]
     public class MyController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Info()
         {
-            return View();
+            Models.MyAccountViewModel viewModel = new Models.MyAccountViewModel();
+            viewModel.AccountData=JsonConvert.DeserializeObject<Models.AccountDataModel>(HttpContext.Session.GetString("AccountLoginData"));
+            return View(viewModel);
         }
         [HttpGet]
         public IActionResult Article([FromRoute]int p=1)
@@ -42,9 +44,17 @@ namespace Mango.Web.Areas.Account.Controllers
             }
             return View(viewModel);
         }
-        public IActionResult Document()
+        public IActionResult Document([FromRoute]int themeId,[FromRoute]int p=1)
         {
-            return View();
+            int accountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+            Models.MyThemeDocumentViewModel viewModel = new Models.MyThemeDocumentViewModel();
+            var apiResult = HttpCore.HttpGet($"/api/Docs/Theme/user/{accountId}/{themeId}/{p}");
+
+            if (apiResult.Code == 0)
+            {
+                viewModel.ListData = JsonConvert.DeserializeObject<List<Models.DocumentDataModel>>(apiResult.Data.ToString());
+            }
+            return View(viewModel);
         }
     }
 }

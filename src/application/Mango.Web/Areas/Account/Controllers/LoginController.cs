@@ -33,7 +33,7 @@ namespace Mango.Web.Areas.Account.Controllers
                 HttpContext.Session.SetString("AccountName", model.AccountName);
                 HttpContext.Session.SetString("NickName", model.NickName);
                 HttpContext.Session.SetString("HeadUrl", model.HeadUrl);
-                HttpContext.Session.SetString("UserLogin", apiResult.Data.ToString());
+                HttpContext.Session.SetString("AccountLoginData", apiResult.Data.ToString());
             }
             return Json(apiResult);
         }
