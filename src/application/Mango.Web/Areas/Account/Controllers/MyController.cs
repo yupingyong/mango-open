@@ -44,6 +44,8 @@ namespace Mango.Web.Areas.Account.Controllers
             }
             return View(viewModel);
         }
+        [HttpGet("{area}/{controller}/{action}/{themeId}")]
+        [HttpGet("{area}/{controller}/{action}/{themeId}/{p}")]
         public IActionResult Document([FromRoute]int themeId,[FromRoute]int p=1)
         {
             int accountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);

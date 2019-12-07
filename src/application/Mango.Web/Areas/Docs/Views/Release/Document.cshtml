@@ -90,17 +90,17 @@
             if (v.Create()) {
                 var tipIndex = layer.load(2);
                 $("#formData").ajaxSubmit({
-                    url: '/user/MyDocs/AddDocs',
+                    url: '/docs/release/document',
                     success: function (result) {
-                        if (result == "ok") {
-                            layer.msg("发布成功", function () {
+                        if (result.code == 0) {
+                            layer.msg("保存成功", function () {
                                 layer.close(tipIndex);
-                                window.location.href = window.location.href;
+                                window.location.href = '/docs/theme';
                             });
                         }
                         else {
                             layer.close(tipIndex);
-                            layer.msg(result);
+                            layer.msg(result.message);
                         }
                     }
                 });

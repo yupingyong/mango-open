@@ -43,3 +43,5 @@
 /src/services/Modules/Mango.Module.Core/bin/Debug/netcoreapp3.1
 /src/services/Modules/Mango.Module.Docs/bin/Debug/netcoreapp3.1
 /src/services/Modules/Mango.Module.WebSite/bin/Debug/netcoreapp3.1
+/src/application/Mango.Manager/bin/Debug/netcoreapp3.1
+/src/application/Mango.Manager/obj

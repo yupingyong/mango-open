@@ -49,7 +49,7 @@
             <param name="count">需要获取的记录条数</param>
             <returns></returns>
         </member>
-        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Put(Mango.Module.CMS.Models.ContentEditRequestModel)">
+        <member name="M:Mango.Module.CMS.Controllers.ContentsController.Put(Mango.Module.CMS.Models.ContentsEditRequestModel)">
             <summary>
             内容编辑
             </summary>
@@ -178,26 +178,6 @@
             所属频道
             </summary>
         </member>
-        <member name="P:Mango.Module.CMS.Models.ContentEditRequestModel.Title">
-            <summary>
-            标题
-            </summary>
-        </member>
-        <member name="P:Mango.Module.CMS.Models.ContentEditRequestModel.Contents">
-            <summary>
-            内容
-            </summary>
-        </member>
-        <member name="P:Mango.Module.CMS.Models.ContentEditRequestModel.ChannelId">
-            <summary>
-            频道ID
-            </summary>
-        </member>
-        <member name="P:Mango.Module.CMS.Models.ContentEditRequestModel.ContentsId">
-            <summary>
-            内容ID
-            </summary>
-        </member>
         <member name="P:Mango.Module.CMS.Models.ContentReleaseRequestModel.Title">
             <summary>
             标题
@@ -286,6 +266,26 @@
         <member name="P:Mango.Module.CMS.Models.ContentsDataModel.HeadUrl">
             <summary>
             用户头像
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsEditRequestModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsEditRequestModel.Contents">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsEditRequestModel.ChannelId">
+            <summary>
+            频道ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.CMS.Models.ContentsEditRequestModel.ContentsId">
+            <summary>
+            内容ID
             </summary>
         </member>
         <member name="P:Mango.Module.CMS.Models.ContentsListDataModel.ContentsId">

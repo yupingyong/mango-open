@@ -27,18 +27,28 @@ namespace Mango.Web.Areas.Docs.Controllers
             requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
 
             string requestData = JsonConvert.SerializeObject(requestModel);
-            var apiResult = HttpCore.HttpPost(ApiServerConfig.Docs_ThemeApi, requestData);
+            var apiResult = HttpCore.HttpPost("/api/Docs/Theme", requestData);
             return Json(apiResult);
         }
         /// <summary>
         /// 发布文档
         /// </summary>
         /// <returns></returns>
-        [HttpGet("{themeId}")]
+        [HttpGet("{area}/{controller}/{action}/{themeId}")]
         public IActionResult Document(int themeId)
         {
             ViewData["ThemeId"] = themeId;
             return View();
         }
+        [HttpPost]
+        public IActionResult Document(Models.DocsContentsCreateRequestModel requestModel)
+        {
+            requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+
+            string requestData = JsonConvert.SerializeObject(requestModel);
+            var apiResult = HttpCore.HttpPost($"/api/Docs/Contents", requestData);
+            return Json(apiResult);
+        }
+
     }
 }

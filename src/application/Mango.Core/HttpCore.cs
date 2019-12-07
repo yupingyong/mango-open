@@ -38,6 +38,29 @@ namespace Mango.Core
             }
         }
         /// <summary>
+        /// 发起POST同步请求
+        /// </summary>
+        /// <param name="apiUrl"></param>
+        /// <param name="postData"></param>
+        /// <param name="contentType">application/xml、application/json、application/text、application/x-www-form-urlencoded</param>  
+        /// <returns></returns>
+        public static ApiResult HttpPut(string apiUrl, string postData = null, string contentType = "application/json")
+        {
+            postData = postData ?? "";
+            using (HttpClient client = new HttpClient())
+            {
+                using (HttpContent httpContent = new StringContent(postData, Encoding.UTF8))
+                {
+                    if (contentType != null)
+                        httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
+
+                    var httpUrl = $"{Configuration.GetItem("ApiServerUrl")}{apiUrl}";
+                    HttpResponseMessage response = client.PutAsync(httpUrl, httpContent).Result;
+                    return JsonConvert.DeserializeObject<ApiResult>(response.Content.ReadAsStringAsync().Result);
+                }
+            }
+        }
+        /// <summary>
         /// 发起GET同步请求
         /// </summary>
         /// <param name="apiUrl"></param>

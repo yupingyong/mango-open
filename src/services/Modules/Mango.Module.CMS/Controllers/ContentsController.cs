@@ -182,7 +182,7 @@ namespace Mango.Module.CMS.Controllers
         /// <param name="requestModel"></param>
         /// <returns></returns>
         [HttpPut]
-        public IActionResult Put(Models.ContentEditRequestModel requestModel)
+        public IActionResult Put(Models.ContentsEditRequestModel requestModel)
         {
             if (string.IsNullOrEmpty(requestModel.Title) || requestModel.Title == "")
             {
@@ -192,14 +192,15 @@ namespace Mango.Module.CMS.Controllers
             {
                 return APIReturnMethod.ReturnFailed("内容不能为空");
             }
+            var repository = _unitOfWork.GetRepository<Entity.m_CmsContents>();
             //
-            Entity.m_CmsContents entity = new Entity.m_CmsContents();
+            Entity.m_CmsContents entity = repository.Query().Where(q=>q.ContentsId==requestModel.ContentsId).FirstOrDefault();
             entity.Contents = requestModel.Contents;//Framework.Core.HtmlFilter.SanitizeHtml(model.Contents);
             entity.LastTime = DateTime.Now;
             entity.Title = requestModel.Title;
             entity.ContentsId = requestModel.ContentsId;
             entity.ChannelId = requestModel.ChannelId;
-            var repository = _unitOfWork.GetRepository<Entity.m_CmsContents>();
+            
             repository.Update(entity);
             int resultCount = _unitOfWork.SaveChanges();
             return resultCount > 0 ? APIReturnMethod.ReturnSuccess() : APIReturnMethod.ReturnFailed();

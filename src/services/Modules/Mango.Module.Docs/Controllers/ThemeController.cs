@@ -46,7 +46,8 @@ namespace Mango.Module.Docs.Controllers
                         IsShow = q.IsShow.Value,
                         AppendTime=q.AppendTime,
                         PlusCount=q.PlusCount,
-                        ReadCount=q.ReadCount
+                        ReadCount=q.ReadCount,
+                        AccountId=q.AccountId
                     })
                      .OrderByDescending(q => q.DocsId)
                      .Skip(10 * (p - 1))

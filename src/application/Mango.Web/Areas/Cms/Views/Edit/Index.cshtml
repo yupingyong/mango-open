@@ -1,10 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "发布文章";
+    ViewData["Title"] = "文章内容编辑";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Mango.Web.Areas.Cms.Models.ChannelDataModel>
+@model Mango.Web.Areas.Cms.Models.EditViewModel
 <div class="row" style="margin-top:20px;">
-    <form class="form-horizontal" method="post" id="formRelease">
+    <form class="form-horizontal" method="post" id="formBox">
         <div class="row">
             <div class="col-lg-3">
                 <div class="input-group mb-3">
@@ -12,9 +12,9 @@
                         <span class="input-group-text" id="basic-addon1">频道:</span>
                     </div>
                     <select class=" form-control" id="ChannelId" name="ChannelId">
-                        @if (Model != null)
+                        @if (Model.ChannelListData != null)
                         {
-                            foreach (var item in Model)
+                            foreach (var item in Model.ChannelListData)
                             {
                                 <option value="@item.ChannelId">@(item.ChannelName)</option>
                             }
@@ -27,15 +27,16 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">标题:</span>
                     </div>
-                    <input type="text" class="form-control" id="Title" name="Title" placeholder="你可以取一个简洁的标题...">
+                    <input type="text" class="form-control" id="Title" name="Title" placeholder="你可以取一个简洁的标题..." value="@Model.ContentsData.Title">
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <textarea style="height:360px;width:800px;" id="Contents" name="Contents" placeholder="输入你想发布的内容..."></textarea>
+            <textarea style="height:360px;width:800px;" id="Contents" name="Contents" placeholder="输入你想发布的内容...">@Html.Raw(Model.ContentsData.Contents)</textarea>
         </div>
 
         <div class="form-group" style="margin-top:15px;">
+            <input type="hidden" id="ContentsId" name="ContentsId" value="@Model.ContentsData.ContentsId" />
             <button type="button" id="btn_Post" class="btn btn-success">马上发布</button>
         </div>
         <div class="form-group">
@@ -45,7 +46,6 @@
     </form>
 </div>
 @section Scripts{
-
     <script src="~/lib/jquery/jquery.validator.min.js"></script>
     <script src="~/lib/jquery/jquery.form.js"></script>
 
@@ -77,6 +77,11 @@
     </script>
     <script type="text/javascript">
 
+        $(window).ready(function () {
+            $("#ChannelId").val("@(Model.ContentsData.ChannelId)");
+        });
+    </script>
+    <script type="text/javascript">
         $("#btn_Post").click(function () {
             $("#Contents").val(tinymce.get('Contents').getContent());
             //加载验证
@@ -97,12 +102,12 @@
             });
             if (v.Create()) {
                 var tipIndex = layer.load(2);
-                $("#formRelease").ajaxSubmit({
-                    url: '/cms/release',
+                $("#formBox").ajaxSubmit({
+                    url: '/cms/edit',
                     success: function (result) {
                         layer.close(tipIndex);
                         if (result.code==0) {
-                            layer.msg("发布成功", function () {
+                            layer.msg("保存成功", function () {
                                 window.location.href = '/channel';
                             });
                         }
