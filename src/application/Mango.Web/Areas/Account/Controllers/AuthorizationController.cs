@@ -25,7 +25,7 @@ namespace Mango.Web.Areas.Account.Controllers
         {
             string userIP = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             //获取频道数据
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Account_AuthorizationValidateCode}/{email}/{ticket}/{randstr}/{userIP}");
+            var apiResult = HttpCore.HttpGet($"/api/Account/ValidateCode/{email}/{ticket}/{randstr}/{userIP}");
             return apiResult.Message;
         }
     }

@@ -20,19 +20,19 @@ namespace Mango.Web.Areas.Cms.Controllers
             Models.ReadViewModel viewModel = new Models.ReadViewModel();
             //获取帖子详情数据
             var requestData = new Dictionary<string, object>();
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsApi}/{id}");
+            var apiResult = HttpCore.HttpGet($"/api/CMS/Contents/{id}");
             if (apiResult.Code == 0)
             {
                 viewModel.ContentsData = JsonConvert.DeserializeObject<Models.ContentsDataModel>(apiResult.Data.ToString());
             }
             //获取热门帖子数据
-            apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsCustomizeApi}/hot/8");
+            apiResult = HttpCore.HttpGet($"/api/CMS/Contents/customize/hot/8");
             if (apiResult.Code == 0)
             {
                 viewModel.HotListData = JsonConvert.DeserializeObject<List<Models.ContentsListDataModel>>(apiResult.Data.ToString());
             }
             //获取频道数据
-            apiResult = HttpCore.HttpGet(ApiServerConfig.CMS_ChannelApi);
+            apiResult = HttpCore.HttpGet("/api/CMS/Channel");
 
             if (apiResult.Code == 0)
             {

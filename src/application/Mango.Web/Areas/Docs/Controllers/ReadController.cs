@@ -23,7 +23,7 @@ namespace Mango.Web.Areas.Docs.Controllers
             viewModel.DocsId = docsId;
             //
             //获取文档列表数据
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_GetDocsListApi}/{themeId}");
+            var apiResult = HttpCore.HttpGet($"/api/Docs/Theme/document/{themeId}");
             if (apiResult.Code == 0 && apiResult.Data != null)
             {
                 viewModel.ItemsListData = JsonConvert.DeserializeObject<List<Models.DocumentDataModel>>(apiResult.Data.ToString());
@@ -35,7 +35,7 @@ namespace Mango.Web.Areas.Docs.Controllers
             //获取帖子详情数据
             if (docsId == 0)
             {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_DocsContentsApi}/{themeId}");
+                apiResult = HttpCore.HttpGet($"/api/Docs/Contents/{themeId}");
                 if (apiResult.Code == 0)
                 {
                     viewModel.DocsThemeData = JsonConvert.DeserializeObject<Models.ThemeDataModel>(apiResult.Data.ToString());
@@ -43,7 +43,7 @@ namespace Mango.Web.Areas.Docs.Controllers
             }
             else
             {
-                apiResult = HttpCore.HttpGet($"{ApiServerConfig.Docs_DocsContentsApi}/{themeId}/{docsId}");
+                apiResult = HttpCore.HttpGet($"/api/Docs/Contents/{themeId}/{docsId}");
                 if (apiResult.Code == 0)
                 {
                     viewModel.DocsData = JsonConvert.DeserializeObject<Models.DocsContentsModel>(apiResult.Data.ToString());

@@ -23,7 +23,7 @@ namespace Mango.Web.Areas.Account.Controllers
         public IActionResult Index(Models.AccountLoginRequestModel requestModel)
         {
             string postData = JsonConvert.SerializeObject(requestModel);
-            var apiResult = HttpCore.HttpPost(ApiServerConfig.Account_Login, postData);
+            var apiResult = HttpCore.HttpPost("/api/Account/Login", postData);
             if (apiResult.Code == 0)
             {
                 Models.AccountDataModel model = JsonConvert.DeserializeObject<Models.AccountDataModel>(apiResult.Data.ToString());

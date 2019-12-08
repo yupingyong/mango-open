@@ -14,7 +14,7 @@ namespace Mango.Web.Controllers
         public IActionResult Index()
         {
             Models.PortalViewModel viewModel = new Models.PortalViewModel();
-            var apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ContentsCustomizeApi}/new/6");
+            var apiResult = HttpCore.HttpGet($"/api/CMS/Contents/customize/new/6");
             if (apiResult.Code == 0)
             {
                 viewModel.ContentsListDatas = JsonConvert.DeserializeObject<List<Areas.Cms.Models.ContentsListDataModel>>(apiResult.Data.ToString());

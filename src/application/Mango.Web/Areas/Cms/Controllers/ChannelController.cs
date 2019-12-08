@@ -31,7 +31,7 @@ namespace Mango.Web.Areas.Cms.Controllers
         {
             Models.ChannelViewModel viewModel = new Models.ChannelViewModel();
             //获取频道数据
-            var apiResult = HttpCore.HttpGet(ApiServerConfig.CMS_ChannelApi);
+            var apiResult = HttpCore.HttpGet("/api/CMS/Channel");
 
             if (apiResult.Code == 0)
             {
@@ -40,7 +40,7 @@ namespace Mango.Web.Areas.Cms.Controllers
 
             //获取帖子数据
 
-            apiResult = HttpCore.HttpGet($"{ApiServerConfig.CMS_ChannelApi}/{id}/{p}");
+            apiResult = HttpCore.HttpGet($"/api/CMS/Channel/{id}/{p}");
 
             if (apiResult.Code == 0)
             {

@@ -21,7 +21,7 @@ namespace Mango.Web.Areas.Account.Controllers
         public IActionResult Index(Models.AccountRegisterRequestModel requestModel)
         {
             string requestData = JsonConvert.SerializeObject(requestModel);
-            var apiResult = HttpCore.HttpPost(ApiServerConfig.Account_Regiser, requestData);
+            var apiResult = HttpCore.HttpPost("/api/Account/Register", requestData);
             return Json(apiResult);
         }
     }
