@@ -4,10 +4,24 @@
         <name>Mango.Module.Account</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.Account.Controllers.InformationController.Put(Mango.Module.Account.Models.InformationUpdateRequestModel)">
+            <summary>
+            更新用户资料
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:Mango.Module.Account.Controllers.LoginController.Post(Mango.Module.Account.Models.LoginRequestModel)">
             <summary>
             账号登录
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mango.Module.Account.Controllers.PasswordController.Put(Mango.Module.Account.Models.PasswordUpdateRequestModel)">
+            <summary>
+            更新登录密码
+            </summary>
+            <param name="requestModel"></param>
             <returns></returns>
         </member>
         <member name="M:Mango.Module.Account.Controllers.RegisterController.Post(Mango.Module.Account.Models.RegisterRequestModel)">
@@ -102,6 +116,21 @@
             
             </summary>
         </member>
+        <member name="P:Mango.Module.Account.Models.InformationUpdateRequestModel.AccountId">
+            <summary>
+            账号ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.InformationUpdateRequestModel.InformationType">
+            <summary>
+            待更新的资料信息类型(1.用户昵称 2.用户头像 3.用户标签 4.用户所在地 5.性别)
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.InformationUpdateRequestModel.InformationValue">
+            <summary>
+            待更新的资料值
+            </summary>
+        </member>
         <member name="P:Mango.Module.Account.Models.LoginRequestModel.AccountName">
             <summary>
             登陆账号
@@ -110,6 +139,21 @@
         <member name="P:Mango.Module.Account.Models.LoginRequestModel.Password">
             <summary>
             登陆密码
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.PasswordUpdateRequestModel.AccountId">
+            <summary>
+            账户ID
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.PasswordUpdateRequestModel.Password">
+            <summary>
+            原密码
+            </summary>
+        </member>
+        <member name="P:Mango.Module.Account.Models.PasswordUpdateRequestModel.NewPassword">
+            <summary>
+            新密码
             </summary>
         </member>
         <member name="T:Mango.Module.Account.Models.RegisterRequestModel">

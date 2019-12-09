@@ -1,51 +1,33 @@
-﻿@{
-    ViewData["Title"] = "文章内容编辑";
+﻿
+@{
+    ViewData["Title"] = "编辑文档主题";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model Mango.Web.Areas.Cms.Models.EditViewModel
+@model Mango.Web.Areas.Docs.Models.EditThemeViewModel
+
 <div class="row" style="margin-top:20px;">
-    <form class="form-horizontal" method="post" id="formBox">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">频道:</span>
-                    </div>
-                    <select class=" form-control" id="ChannelId" name="ChannelId">
-                        @if (Model.ChannelListData != null)
-                        {
-                            foreach (var item in Model.ChannelListData)
-                            {
-                                <option value="@item.ChannelId">@(item.ChannelName)</option>
-                            }
-                        }
-                    </select>
-                </div>
+    <form class="form-horizontal" method="post" id="formData">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">标题:</span>
             </div>
-            <div class="col-lg-9">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">标题:</span>
-                    </div>
-                    <input type="text" class="form-control" id="Title" name="Title" placeholder="你可以取一个简洁的标题..." value="@Model.ContentsData.Title">
-                </div>
-            </div>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="你可以取一个简洁的标题..." value="@Model.ThemeData.Title">
         </div>
         <div class="form-group">
-            <textarea style="height:360px;width:800px;" id="Contents" name="Contents" placeholder="输入你想发布的内容...">@Html.Raw(Model.ContentsData.Contents)</textarea>
+            <textarea style="height:360px;width:800px;" id="Contents" name="Contents" placeholder="输入你想发布的内容...">@Html.Raw(Model.ThemeData.Contents)</textarea>
         </div>
 
         <div class="form-group" style="margin-top:15px;">
-            <input type="hidden" id="ContentsId" name="ContentsId" value="@Model.ContentsData.ContentsId" />
-            <button type="button" id="btn_Post" class="btn btn-success">马上发布</button>
+            <input type="hidden" id="ThemeId" name="ThemeId" value="@Model.ThemeData.ThemeId" />
+            <button type="button" id="btn_Post" class="btn btn-success">马上提交</button>
         </div>
         <div class="form-group">
-
             <span class="text">温馨提示:请勿发布人身攻击以及一切违法的图片以及文字.</span>
         </div>
     </form>
 </div>
 @section Scripts{
+
     <script src="~/lib/jquery/jquery.validator.min.js"></script>
     <script src="~/lib/jquery/jquery.form.js"></script>
 
@@ -77,23 +59,18 @@
     </script>
     <script type="text/javascript">
 
-        $(window).ready(function () {
-            $("#ChannelId").val("@(Model.ContentsData.ChannelId)");
-        });
-    </script>
-    <script type="text/javascript">
         $("#btn_Post").click(function () {
             $("#Contents").val(tinymce.get('Contents').getContent());
             //加载验证
             var config = new Array();
             config.push({
                 id: $("#Title"),
-                required: { tip: '请输入帖子标题' },
+                required: { tip: '请输入主题标题' },
                 length: { min: 1, max: 80 }
             });
             config.push({
                 id: $("#Contents"),
-                required: { tip: '请输入帖子内容' },
+                required: { tip: '请输入主题内容' },
                 length: { min: 10, max: 60000 }
             });
 
@@ -102,13 +79,13 @@
             });
             if (v.Create()) {
                 var tipIndex = layer.load(1);
-                $("#formBox").ajaxSubmit({
-                    url: '/cms/edit',
+                $("#formData").ajaxSubmit({
+                    url: '/docs/edit/theme',
                     success: function (result) {
                         layer.close(tipIndex);
                         if (result.code==0) {
                             layer.msg("保存成功", function () {
-                                window.location.href = '/cms/channel';
+                                window.location.href = '/docs/read/@Model.ThemeData.ThemeId';
                             });
                         }
                         else {
