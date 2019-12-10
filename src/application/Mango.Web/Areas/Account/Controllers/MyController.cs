@@ -18,6 +18,29 @@ namespace Mango.Web.Areas.Account.Controllers
             viewModel.AccountData=JsonConvert.DeserializeObject<Models.AccountDataModel>(HttpContext.Session.GetString("AccountLoginData"));
             return View(viewModel);
         }
+        [HttpPost]
+        public IActionResult Information(Models.InformationUpdateRequestModel requestModel)
+        {
+            requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+
+            string requestData = JsonConvert.SerializeObject(requestModel);
+            var apiResult = HttpCore.HttpPut($"/api/Account/Information", requestData);
+            return Json(apiResult);
+        }
+        [HttpPost]
+        public IActionResult Password(Models.PasswordUpdateRequestModel requestModel)
+        {
+            requestModel.AccountId = HttpContext.Session.GetInt32("AccountId").GetValueOrDefault(0);
+
+            string requestData = JsonConvert.SerializeObject(requestModel);
+            var apiResult = HttpCore.HttpPut($"/api/Account/Password", requestData);
+            return Json(apiResult);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Article([FromRoute]int p=1)
         {

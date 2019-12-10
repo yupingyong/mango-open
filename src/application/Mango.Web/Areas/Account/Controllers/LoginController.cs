@@ -14,6 +14,16 @@ namespace Mango.Web.Areas.Account.Controllers
     [Area("Account")]
     public class LoginController : Controller
     {
+        /// <summary>
+        /// 退出登录
+        /// </summary>
+        /// <returns></returns>
+        public void OutLogin()
+        {
+            //清除会话信息
+            HttpContext.Session.Clear();
+            Response.Redirect("/account/login");
+        }
         [HttpGet]
         public IActionResult Index()
         {

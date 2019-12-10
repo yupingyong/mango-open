@@ -49,6 +49,9 @@ else
     <script src="~/lib/jquery/jquery.form.js"></script>
     <script type="text/javascript">
         var fromurl = "@(Html.ViewContext.HttpContext.Request.Query["fromurl"])";
+        if (fromurl == "") {
+            fromurl = "/portal";
+        }
         $("#btn_Post").click(function () {
             var ths = this;
             var accountName = $("#AccountName").val();
