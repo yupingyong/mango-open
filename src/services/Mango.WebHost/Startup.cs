@@ -66,6 +66,7 @@ namespace Mango.WebHost
                     var error = feature?.Error;
                 }));
             }
+            
             app.UseStaticFiles();
             //启用授权组件
             app.UseIdentityServer();

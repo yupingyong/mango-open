@@ -142,15 +142,13 @@
                     //上传到又拍云
                     $.ajax({
                         type: 'post',
-                        url: '/File/UPYun',
-                        data: 'fileName=' + file.name,
+                        url: '/Main/UPYun/' + file.name,
                         success: function (result) {
-                            if (result != '') {
-                                var json = JSON.parse(result);
+                            if (result.code==0) {
                                 var form = new FormData();
                                 form.append('file', file.content);
-                                form.append('authorization', json.Signature);
-                                form.append('policy', json.Policy);
+                                form.append('authorization', result.data.signature);
+                                form.append('policy', result.data.policy);
                                 //上传文件
                                 $.ajax({
                                     type: 'post',
@@ -159,7 +157,7 @@
                                     processData: false,
                                     contentType: false,
                                     success: function (res) {
-                                        cfg.success(json.Path);
+                                        cfg.success(result.data.path);
                                     },
                                     error: function (ex) {
                                         cfg.error(ex);

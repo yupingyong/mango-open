@@ -12,6 +12,14 @@ namespace Mango.Web.Areas.Account.Controllers
     [Area("Account")]
     public class MyController : Controller
     {
+        public IActionResult Message()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 账号信息
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Info()
         {
             Models.MyAccountViewModel viewModel = new Models.MyAccountViewModel();
@@ -25,6 +33,29 @@ namespace Mango.Web.Areas.Account.Controllers
 
             string requestData = JsonConvert.SerializeObject(requestModel);
             var apiResult = HttpCore.HttpPut($"/api/Account/Information", requestData);
+            if (apiResult.Code == 0)
+            {
+                var accountLoginData= JsonConvert.DeserializeObject<Models.AccountDataModel>(HttpContext.Session.GetString("AccountLoginData"));
+                switch (requestModel.InformationType)
+                {
+                    case 3:
+                        accountLoginData.Tags = requestModel.InformationValue;
+                        break;
+                    case 4:
+                        accountLoginData.AddressInfo = requestModel.InformationValue;
+                        break;
+                    case 5:
+                        accountLoginData.Sex = requestModel.InformationValue;
+                        break;
+                    case 1:
+                        accountLoginData.NickName = requestModel.InformationValue;
+                        break;
+                    case 2:
+                        accountLoginData.HeadUrl = requestModel.InformationValue;
+                        break;
+                }
+                HttpContext.Session.SetString("AccountLoginData", JsonConvert.SerializeObject(accountLoginData));
+            }
             return Json(apiResult);
         }
         [HttpPost]

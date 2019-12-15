@@ -37,11 +37,7 @@ namespace Mango.Web.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            var p= HttpContext.Request.Query["p"];
-            ViewModels.HomeViewModel viewModel = new ViewModels.HomeViewModel();
-            //获取帖子数据
-            
-            return View(viewModel);
+            return View();
         }
     }
 }

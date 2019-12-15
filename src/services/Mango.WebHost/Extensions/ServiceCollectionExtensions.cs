@@ -26,6 +26,7 @@ using Mango.Framework.Services.Aliyun;
 using Mango.Framework.Services.Aliyun.Sms;
 using Mango.Framework.Services.Tencent.Captcha;
 using Mango.Framework.Services.EMail;
+using Mango.Framework.Services.UPyun;
 
 using Mango.Framework.Converter;
 using Mango.Framework.Module;
@@ -71,6 +72,14 @@ namespace Mango.WebHost.Extensions
                 SmtpAuthenticateEmail= configuration.GetSection("Email:SmtpAuthenticateEmail").Value,
                 SmtpAuthenticatePasswordText= configuration.GetSection("Email:SmtpAuthenticatePasswordText").Value
             }));
+            //添加又拍云文件服务组件
+            services.AddSingleton(typeof(IUPyunService), new UPyunService(new UPyunOptions()
+            {
+                BucketName = configuration.GetSection("UPyun:BucketName").Value,
+                BucketPassword = configuration.GetSection("UPyun:BucketPassword").Value,
+                BucketFileUrl = configuration.GetSection("UPyun:BucketFileUrl").Value,
+            }));
+            //
             ServiceContext.RegisterServices(services.BuildServiceProvider());
             return services;
         }
@@ -124,7 +133,7 @@ namespace Mango.WebHost.Extensions
                 doc.DocInclusionPredicate((docName, apiDescription) => {
                     return docName == apiDescription.ActionDescriptor.RouteValues.Where(q => q.Key == "area").FirstOrDefault().Value;
                 });
-                //doc.OperationFilter<AddAuthorizationTokenHeaderParameter>();
+                doc.OperationFilter<AddAuthorizationTokenHeaderParameter>();
             });
             return services;
         }

@@ -4,6 +4,13 @@
         <name>Mango.Module.WebSite</name>
     </assembly>
     <members>
+        <member name="M:Mango.Module.WebSite.Controllers.FileController.Get(System.String)">
+            <summary>
+            获取又拍云存储文件上传
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
         <member name="P:Mango.Module.WebSite.Entity.m_WebSiteConfig.ConfigId">
             <summary>
             

@@ -19,6 +19,10 @@ namespace Mango.Module.CMS.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        [HttpPost]
+        public IActionResult Post()
+        {
+            return APIReturnMethod.ReturnSuccess();
+        }
     }
 }
